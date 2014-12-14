@@ -14,3 +14,35 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= scrambleClasses/game.js
+//= scrambleClasses/letters.js
+//= scrambleClasses/board.js
+
+
+// $(function() {
+// 	fetchAndRenderLetters();
+// });
+
+
+// function fetchAndRenderLetters() {
+// 	$.get('/letters')
+// 	 .done(function(data) {
+// 	 		data.forEach(renderLetter);
+// 	 });
+// }
+
+// function renderLetter(letter) {
+
+// 	var letterID = letter.id;
+// 	var letter = letter.letter;
+// 	var points = letter.points;
+
+// 	var letterDiv = $('<div>').addClass('letter').attr('id', letterID);
+// 	var letterDisplay = $('<p>').text(letter).addClass('letter');
+// 	var pointsDisplay = $('<p>').text(points).addClass('points');
+
+
+// 	letterDiv.append(letterDisplay)
+// 								.append(pointsDisplay);
+
+// }
