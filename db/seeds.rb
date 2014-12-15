@@ -14,3 +14,9 @@ User.create({
 	password: "amanda",
 	password_confirmation: "amanda"
 	})
+
+User.create({
+	username: "joenapo",
+	password: "joe",
+	password_confirmation: "joe"
+	})

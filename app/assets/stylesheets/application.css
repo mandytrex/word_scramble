@@ -18,6 +18,10 @@ body {
 	background-color: white;
 }
 
+div.boggle-board {
+  margin-top: 20px;
+}
+
 div.row {
   width: 680px;
   height: 100px;
@@ -46,7 +50,12 @@ a {
 
 div.timer {
   border: 2px solid black;
-  width: 50px;
-  height: 25px;
+  width: 120px;
+  height: 28px;
   text-align: center;
+}
+
+p.timer{
+  margin: 5px;
+  color: blue;
 }

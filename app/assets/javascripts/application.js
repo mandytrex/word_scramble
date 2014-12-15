@@ -24,9 +24,11 @@ $(function() {
   $('.start').on('click', function() {
 		makeGame();
   	fillBoard();
+  	setTimeout('decreaseTime()',1000);
   });
   $( ".boggle-board" ).on( "click", ".die", selectLetter1);
 })
+
 
 
 var makeGame = function() {
@@ -80,23 +82,26 @@ var fillBoard = function() {
 	$('div#15').append(letter15);
 }
 
-
 var selectLetter1 = function() {
 	var letter1 = $(this).text();
 	console.log(letter1);
 };
 
-var startStopwatch = function() {
-	stopwatchHandle = setInterval(function() {
-		var currentTime = Number(document.getElementById("stopwatch").textContent);
-		currentTime += 1;
-		document.getElementById("stopwatch").textContent = currentTime;
-	}, 1000);
-};
+var mins = 3;  //Set the number of minutes you need
+var secs = mins * 60;
+var currentSeconds = 0;
+var currentMinutes = 0;
+ 
+
+var decreaseTime = function () {
+  currentMinutes = Math.floor(secs / 60);
+  currentSeconds = secs % 60;
+   if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
+   	 secs--;
+    $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds); //Set the element id you need the time put into.
+   if(secs !== -1) setTimeout('decreaseTime()', 1000);
+ }
 
 
-var countdownTimer = function() {
-	var timerDiv = $('.timer');
-}
 
 
