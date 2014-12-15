@@ -1,0 +1,21 @@
+<h1>Log In</h1>
+
+<div class="form" id="signup">
+	<!-- Flash message located in the sessions controller. only appears when user is redirected to this page on logout. tells user they are logged out. -->
+	<% if flash[:logout] %>
+	  <p class="logout"><%= flash[:logout] %></p>
+	<% end %>
+
+
+	<!-- flash message located in the sessions controller. error message that appears if user enters their login info wrong. -->
+	<% if flash[:login_error] %>
+		<p class="login_error"><%= flash[:login_error] %></p>
+	<% end %>
+
+	<hr>
+	<%= render 'form' %> 
+	<h3>
+ <%= link_to "Sign-Up", new_user_path %>
+	<h3>
+		
+</div>	

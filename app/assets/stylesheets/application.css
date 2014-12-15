@@ -15,19 +15,38 @@
  */
 
 body {
-	background-color: mediumpurple;
+	background-color: white;
 }
 
 div.row {
-	background-color: white;
-	border: 2px solid black;
-	color: black;
+  width: 680px;
+  height: 100px;
+  margin: 0 auto;
+  clear: both;
 }
 
 div.die {
-	background-color: white;
-	border: 2px solid black;
-	color: black;
-	width: 25px;
-	height: 25px;
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+  border-radius: 5px;
+  background: white;
+  border: 3px solid blue;
+  float: left;
+
+  text-align: center;
+  line-height: 160px;
+  color: blue;
+  font-size: 100px;
+}
+
+a {
+  color: black;
+}
+
+div.timer {
+  border: 2px solid black;
+  width: 50px;
+  height: 25px;
+  text-align: center;
 }

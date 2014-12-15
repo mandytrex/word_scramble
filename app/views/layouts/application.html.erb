@@ -7,12 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+			<ul id="navbar">
+		<% if session[:current_user_id] %>
+			<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :home] } %>
+		<% else %>
+			<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :home] } %>
+		<% end %>
+	</ul>
+	</header>
 
 	<h1> Word Scramble</h1>
 
 <%= yield %>
 <button class="start">Start Game</button>
 <br> <br>
+<%= link_to "Log Out", sessions_path, method: :delete %>
+
+<div class="timer"> 
+3
+</div>
+<div class="boggle-board">
+</div>
 
 </body>
 </html>

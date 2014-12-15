@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration
     	t.integer :total_score
     	t.references :user
 
+    	t.timestamps
     end
   end
 end
