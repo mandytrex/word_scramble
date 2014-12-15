@@ -15,34 +15,29 @@
 //= require turbolinks
 //= require_tree .
 //= scrambleClasses/game.js
-//= scrambleClasses/letters.js
+//= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
 
-// $(function() {
-// 	fetchAndRenderLetters();
-// });
 
+$(function() {
+  console.log("Working!");
+  $('.start').on('click', function() {
+  	startGame();
+  });
+});
 
-// function fetchAndRenderLetters() {
-// 	$.get('/letters')
-// 	 .done(function(data) {
-// 	 		data.forEach(renderLetter);
-// 	 });
-// }
+// var makeGame = function() {
+//   for(var row = 0; row < 4; row++) {
+//     var rowDiv = $('<div">').addClass('row').appendTo($('body'))
+//     for(var col = 0; col < 4; col++) {
+//       $('<div>').addClass('die').attr('id', row * 4 + col).appendTo(rowDiv);
+//     }
+//   }
+//   $(rowDiv).appendTo($('body'));
+// };
 
-// function renderLetter(letter) {
-
-// 	var letterID = letter.id;
-// 	var letter = letter.letter;
-// 	var points = letter.points;
-
-// 	var letterDiv = $('<div>').addClass('letter').attr('id', letterID);
-// 	var letterDisplay = $('<p>').text(letter).addClass('letter');
-// 	var pointsDisplay = $('<p>').text(points).addClass('points');
-
-
-// 	letterDiv.append(letterDisplay)
-// 								.append(pointsDisplay);
-
-// }
+var startGame = function() {
+  game.start();
+  game.addLetter();
+}

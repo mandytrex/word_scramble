@@ -17,3 +17,17 @@
 body {
 	background-color: mediumpurple;
 }
+
+div.row {
+	background-color: white;
+	border: 2px solid black;
+	color: black;
+}
+
+div.die {
+	background-color: white;
+	border: 2px solid black;
+	color: black;
+	width: 25px;
+	height: 25px;
+}
