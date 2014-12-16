@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-	def index
-  	render layout: 'application', text: ''
+  def index
+    render layout: 'application', text: ''
   end
 
   def authenticate
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-   	User.find(session[:current_user_id]) if session[:current_user_id]
+    User.find(session[:current_user_id]) if session[:current_user_id]
   end
 
 end

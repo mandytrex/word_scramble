@@ -11,9 +11,9 @@
 	<header>
 		<ul id="navbar">
 			<% if session[:current_user_id] %>
-				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :home, :log_out] } %>
+				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :game, :log_out] } %>
 			<% else %>
-				<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :home] } %>
+				<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :game_guest] } %>
 			<% end %>
 	
 		</ul>
