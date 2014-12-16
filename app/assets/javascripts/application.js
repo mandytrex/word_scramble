@@ -18,6 +18,25 @@
 //= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
+if ($('#hidden-game-div')) {
+	$(function() {
+	  // console.log("Working!");
+	  startGame();
+	  $('.start').on('click', function() {
+			makeGame();
+	  	fillBoard();
+	  	setTimeout('decreaseTime()',1000);
+	  });
+	  $( ".boggle-board" ).on("mousedown", ".die", function() {
+	   	buildAWord($(this));
+	   });
+	  $( "body" ).on("click", ".submit-word", function() {
+	   	submitWord();
+	   	currentString = "";
+	   });
+	})
+}
+
 //array of guessed words
 var guessedWords = [];
 //current word
@@ -30,25 +49,6 @@ mousedown = 0;
 
 //last clicked die
 var prevdie;
-
-
-$(function() {
-  // console.log("Working!");
-  startGame();
-  $('.start').on('click', function() {
-		makeGame();
-  	fillBoard();
-  	setTimeout('decreaseTime()',1000);
-  });
-  $( ".boggle-board" ).on("mousedown", ".die", function() {
-   	buildAWord($(this));
-   });
-  $( "body" ).on("click", ".submit-word", function() {
-   	submitWord();
-   	currentString = "";
-   });
-})
-
 
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
