@@ -31,8 +31,16 @@ h1.header {
   margin-left: 20px;
 }
 
+div.top-page {
+  width: 250px;
+  height: 200px;
+  float: left;
+}
+
 div.boggle-board {
-  margin-top: 20px;
+  width: 690px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 div.word-list {
@@ -42,6 +50,7 @@ div.word-list {
   height: 200px;
   border: 2px solid midnightblue;
   margin-left: 20px;
+  
 }
 
 div.row {
