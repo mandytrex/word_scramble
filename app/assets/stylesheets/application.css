@@ -14,8 +14,21 @@
  *= require_self
  */
 
+/*----- GOOGLE FONTS -----*/
+
+@import url(http://fonts.googleapis.com/css?family=Orbitron:400,700);
+@import url(http://fonts.googleapis.com/css?family=Rammetto+One|Fredoka+One|Sigmar+One|Fontdiner+Swanky|Goblin+One|Slackey);
+
+/*-----------------------*/
+
 body {
 	background-color: white;
+}
+
+h1.header {
+  font-family: 'Slackey';
+  color: midnightblue;
+  margin-left: 20px;
 }
 
 div.boggle-board {
@@ -34,28 +47,43 @@ div.die {
   height: 150px;
   margin: 5px;
   border-radius: 5px;
-  background: white;
-  border: 3px solid blue;
+  background: royalblue;
+  border: 3px solid royalblue;
   float: left;
+  font-family: 'Orbitron';
 
   text-align: center;
   line-height: 160px;
-  color: blue;
+  color: midnightblue;
   font-size: 100px;
 }
 
 a {
-  color: black;
+  color: midnightblue;
+  font-family: helvetica;
 }
 
 div.timer {
-  border: 2px solid black;
-  width: 120px;
+  border: 2px solid midnightblue;
+  width: 180px;
   height: 28px;
   text-align: center;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  margin-left: 20px;
 }
 
 p.timer{
   margin: 5px;
-  color: blue;
+  color: midnightblue;
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+
+ul#navbar {
+  float: right;
+  margin-right: 20px;
+}
+
+button.start {
+  margin-left: 20px;
 }
