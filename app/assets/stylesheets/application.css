@@ -35,6 +35,15 @@ div.boggle-board {
   margin-top: 20px;
 }
 
+div.word-list {
+  float: left;
+  color: midnightblue;
+  width: 150px;
+  height: 200px;
+  border: 2px solid midnightblue;
+  margin-left: 20px;
+}
+
 div.row {
   width: 680px;
   height: 100px;
@@ -108,4 +117,16 @@ button.start {
 
 button.submit-word {
   margin-left: 20px;
+}
+
+
+p.word {
+  margin-left: 5px;
+  margin-top: 2px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+p.verified-word {
+  margin-left: 5px;
 }

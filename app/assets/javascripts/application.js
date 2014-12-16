@@ -139,7 +139,7 @@ var verifyWords = function() {
 		for (d=0; d < boggleDictionary.length; d++) {	
 			if (word.toLowerCase() === boggleDictionary[d]) {
 				score += 1;
-				var listItem = $('<li>').addClass('verified-word').text(currentString);
+				var listItem = $('<p>').addClass('verified-word').text(currentString);
 				$('.word-list').append(listItem);
 			}
  		}	
