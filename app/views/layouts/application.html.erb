@@ -7,20 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
 	<header>
-			<ul id="navbar">
-		<% if session[:current_user_id] %>
-			<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :home] } %>
-		<% else %>
-			<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :home] } %>
-		<% end %>
-		| <%= link_to "Log Out", sessions_path, method: :delete %>
-	</ul>
-	</header>
+		<ul id="navbar">
+			<% if session[:current_user_id] %>
+				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :home, :log_out] } %>
+			<% else %>
+				<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :home] } %>
+			<% end %>
+	
+		</ul>
+</header>
 
 <h1 class="header"> Word Scramble</h1>
 
-<div class="top-page">
 <button class="start">Start Game</button>
 
 <br><br>
@@ -35,7 +35,6 @@
 
 <button class="submit-word">Submit Word</button>
 
-</div>
 
 <div class="word-list">
 	<p class="word">Accepted Words:</p>
@@ -44,6 +43,8 @@
 
 <div class="boggle-board">
 </div>
+
+
 
 <%= yield %>
 

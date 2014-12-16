@@ -9,12 +9,3 @@ var game = {
 		// this.render();
 	}
 };
-
-
-// var selectLetters = function() {
-// 	$
-// }
-
-// $('.die').click(function() {
-// 	alert($this).text());
-// });

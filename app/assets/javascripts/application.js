@@ -20,7 +20,9 @@
 
 //array of guessed words
 var guessedWords = [];
+//current word
 var currentString = "";
+//score
 var score = 0;
 
 //if string is being currently built
@@ -41,9 +43,6 @@ $(function() {
   $( ".boggle-board" ).on("mousedown", ".die", function() {
    	buildAWord($(this));
    });
-  // $( ".boggle-board" ).on("mousemove", ".die", function() {
-  //  	buildingWord($(this));
-  //  });
   $( "body" ).on("click", ".submit-word", function() {
    	submitWord();
    	currentString = "";
@@ -107,18 +106,17 @@ var selectLetter1 = function() {
 	console.log(letter1);
 };
 
-var mins = 3;  //Set the number of minutes you need
+var mins = 3;
 var secs = mins * 60;
 var currentSeconds = 0;
 var currentMinutes = 0;
  
-
 var decreaseTime = function () {
   currentMinutes = Math.floor(secs / 60);
   currentSeconds = secs % 60;
    if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
    	 secs--;
-    $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds); //Set the element id you need the time put into.
+    $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
 

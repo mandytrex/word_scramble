@@ -1,3 +1,4 @@
+// borrowed from Hasbro Boggle
 var boggleDictionary = [
 "aah",
 "aahed",
