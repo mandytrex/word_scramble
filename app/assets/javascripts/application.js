@@ -18,6 +18,18 @@
 //= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
+//array of guessed words
+var guessedWords = [];
+var currentString = "";
+var score = 0;
+
+//if string is being currently built
+mousedown = 0;
+
+//last clicked die
+var prevdie;
+
+
 $(function() {
   // console.log("Working!");
   startGame();
@@ -26,9 +38,17 @@ $(function() {
   	fillBoard();
   	setTimeout('decreaseTime()',1000);
   });
-  $( ".boggle-board" ).on( "click", ".die", selectLetter1);
+  $( ".boggle-board" ).on("mousedown", ".die", function() {
+   	buildAWord($(this));
+   });
+  // $( ".boggle-board" ).on("mousemove", ".die", function() {
+  //  	buildingWord($(this));
+  //  });
+  $( "body" ).on("click", ".submit-word", function() {
+   	submitWord();
+   	currentString = "";
+   });
 })
-
 
 
 var makeGame = function() {
@@ -103,5 +123,38 @@ var decreaseTime = function () {
  }
 
 
+ var buildAWord = function(event) {
+ 	var die = event;
+ 	console.log(die.text());
+ 	currentString = currentString.concat(die.text());
+ 	console.log(currentString);
+ 	prevdie = Number(die.attr('id').substr(4, die.attr('id').length-1));
+ 	if (mousedown == 0) {
+ 		mousedown++;
+ 	}
+ };
 
+var verifyWords = function() {
+	var word = currentString;
+		for (d=0; d < boggleDictionary.length; d++) {	
+			if (word.toLowerCase() === boggleDictionary[d]) {
+				score += 1;
+				var listItem = $('<li>').addClass('verified-word').text(currentString);
+				$('.word-list').append(listItem);
+			}
+ 		}	
+	}
 
+function submitWord(){
+	if (mousedown == 1){
+		// if the word is long enough, add it to the word list
+		if (currentString.length >= 3){
+		guessedWords.push(currentString);
+			verifyWords();
+		}
+
+		if (score >= 0) {
+			$('p.score').text('Score: ' + score);
+		}
+	}
+}

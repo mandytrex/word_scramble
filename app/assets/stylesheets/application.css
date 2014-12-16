@@ -70,9 +70,27 @@ div.timer {
   text-align: center;
   font-family: 'Orbitron', 'Courier New', monospace;
   margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 p.timer{
+  margin: 5px;
+  color: midnightblue;
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+div.score {
+  border: 2px solid midnightblue;
+  width: 180px;
+  height: 28px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+p.score{
   margin: 5px;
   color: midnightblue;
   font-family: 'Orbitron', 'Courier New', monospace;
@@ -85,5 +103,9 @@ ul#navbar {
 }
 
 button.start {
+  margin-left: 20px;
+}
+
+button.submit-word {
   margin-left: 20px;
 }
