@@ -20,7 +20,7 @@
 
 if ($('#hidden-game-div')) {
 	$(function() {
-		$.get('/games').done(renderGames);
+		// $.get('/games').done(renderGames);
 	  // console.log("Working!");
 	  startGame();
 	  $('.start').on('click', function() {
@@ -133,11 +133,27 @@ var decreaseTime = function () {
  	}
  };
 
+//verifies a word is in dictionary & adds points to score for valid words
 var verifyWords = function() {
 	var word = currentString;
 		for (d=0; d < boggleDictionary.length; d++) {	
 			if (word.toLowerCase() === boggleDictionary[d]) {
-				score += 1;
+				if (word.length <= 3) {
+					score += 2;	
+				}
+				if (word.length === 4) {
+					score += 4;
+				}
+				if (word.length === 5) {
+					score += 6;
+				}
+				if (word.length === 6) {
+					score += 8;
+				}
+
+				if (word.length >= 7) {
+					score += 10;
+				}
 				var listItem = $('<p>').addClass('verified-word').text(currentString);
 				$('.word-list').append(listItem);
 			}
