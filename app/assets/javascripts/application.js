@@ -20,6 +20,7 @@
 
 if ($('#hidden-game-div')) {
 	$(function() {
+		$.get('/games').done(renderGames);
 	  // console.log("Working!");
 	  startGame();
 	  $('.start').on('click', function() {
@@ -106,7 +107,7 @@ var selectLetter1 = function() {
 	console.log(letter1);
 };
 
-var mins = 3;
+var mins = 2;
 var secs = mins * 60;
 var currentSeconds = 0;
 var currentMinutes = 0;
@@ -156,3 +157,14 @@ function submitWord(){
 		}
 	}
 }
+
+
+// GAME HISTORY FUNCTIONS
+
+var renderGames = function(games) {
+  games.forEach(function(game) {
+    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+    scores.addClass('past-scores');
+    scores.appendTo($('div.game-history'));
+  });
+};

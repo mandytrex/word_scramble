@@ -23,6 +23,7 @@
 
 body {
 	background-color: white;
+  font-family: helvetica;
 }
 
 h1.header {
@@ -38,13 +39,23 @@ div.boggle-board {
 }
 
 div.word-list {
-  float: left;
   color: midnightblue;
   width: 150px;
   height: 200px;
   border: 2px solid midnightblue;
   margin-left: 20px;
-  
+  float: left;
+  padding-top: 2px;
+}
+
+div.game-history {
+  float: right;
+  color: midnightblue;
+  width: 150px;
+  height: 200px;
+  border: 2px solid midnightblue;
+  margin-left: 20px;
+  padding-left: 5px;
 }
 
 div.row {
@@ -132,4 +143,16 @@ p.word {
 
 p.verified-word {
   margin-left: 5px;
+}
+
+p.past-scores {
+  margin-left: 5px;
+  line-height: 5px;
+}
+
+p.game-history {
+  margin-left: 5px;
+  margin-top: 2px;
+  text-decoration: underline;
+  font-weight: bold;
 }

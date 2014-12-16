@@ -9,14 +9,31 @@
 
 User.destroy_all
 
-User.create({
+mandy = User.create({
 	username: "mandytrex",
 	password: "amanda",
 	password_confirmation: "amanda"
 	})
 
-User.create({
+joe = User.create({
 	username: "joenapo",
 	password: "joe",
 	password_confirmation: "joe"
+	})
+
+
+Game.create({
+	total_score: 4,
+	user_id: mandy.id
+	})
+
+Game.create({
+	total_score: 900,
+	user_id: mandy.id
+	})
+
+
+Game.create({
+	total_score: 35,
+	user_id: joe.id
 	})

@@ -3,6 +3,10 @@
 	def show
 		@user = User.find(params[:id])
 		@current_user = current_user
+		respond_to do |format|
+			format.html { render :show }
+			format.json { render json: @user }
+		end
 	end
 
 	def new

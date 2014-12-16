@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users
+  resources :games
 
   get 'home/index' => 'home#index'
   get 'sessions/new' => 'sessions#new', as: 'login'

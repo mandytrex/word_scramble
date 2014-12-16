@@ -20,8 +20,12 @@
 </header>
 
 <h1 class="header"> Word Scramble</h1>
-
-
+	<% if session[:current_user_id] %>
+				<br><br>
+		<div class="game-history">
+			<p class="game-history">Game History: </p>
+		</div>
+	<% end %>
 
 <%= yield %>
 
