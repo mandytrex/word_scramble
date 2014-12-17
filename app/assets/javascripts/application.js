@@ -34,6 +34,10 @@ if ($('#hidden-game-div')) {
 	  $( "body" ).on("click", ".submit-word", function() {
 	   	submitWord();
 	   	currentString = "";
+	   	currentDieIndex = null;
+	   	$('p.word-build').empty();
+	   	$('div.die').removeClass('not-playable');
+	   	$('div.die').addClass('playable');
 	   });
 	})
 }
@@ -48,14 +52,18 @@ var score = 0;
 //if string is being currently built
 mousedown = 0;
 
-//last clicked die
-var currentDieIndex;
+//last clicked die div
+var die;
+
+//index of last clicked die
+var currentDieIndex = null;
+
 
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
     var rowDiv = $('<div>').addClass('row').appendTo($('body'))
     for(var col = 0; col < 4; col++) {
-      var column = $('<div>').addClass('die').attr('id', row * 4 + col)
+      var column = $('<div>').addClass('die').addClass('playable').attr('id', row * 4 + col)
       column.appendTo(rowDiv);
   		$(rowDiv).appendTo($('.boggle-board'));
     }
@@ -102,10 +110,6 @@ var fillBoard = function() {
 	$('div#15').append(letter15);
 }
 
-var selectLetter1 = function() {
-	var letter1 = $(this).text();
-	console.log(letter1);
-};
 
 var mins = 2;
 var secs = mins * 60;
@@ -127,11 +131,15 @@ var decreaseTime = function () {
 // RED dies become UNPLAYABLE
 
 var buildAWord = function(event) {
- 	var die = event;
+ 	die = event;
  	console.log("Current Letter: " + die.text());
  	//index(ID) of current die
- 	if (die.css('background-color') !== 'red') {
- 		die.css('background-color', 'red');
+
+ 	if (die.hasClass('playable') && checkAdjacent() == true) {
+ 		// var dieLetter = $('<p>').text(die.text());
+ 		$('p.word-build').append(die.text());
+ 		die.removeClass('playable');
+ 		die.addClass('not-playable');
  		currentDieIndex = Number(die.attr('id'));
  		console.log("Current Die Index: " + currentDieIndex);
  		currentString = currentString.concat(die.text());
@@ -141,6 +149,101 @@ var buildAWord = function(event) {
  			}	
  		}
  };
+
+var checkAdjacent = function() {
+	 // debugger
+	 if (currentDieIndex === null ) {
+	 		return true;
+	 }
+
+	 if ((currentDieIndex === 0) && (Number(die.attr('id')) === 4 || Number(die.attr('id')) === 1 ))	{
+	 	//can click 4 or 1
+	 		return true;
+	 } 
+
+	 if ((currentDieIndex === 1) && (Number(die.attr('id')) === 0 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 2 ))	{
+	 	//can click 0, 5, 2
+	 	  return true;
+	 }
+
+	 if ((currentDieIndex === 2) && (Number(die.attr('id')) === 1 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 3 ))	{
+	 	//can click 1, 6, 3
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 3) && (Number(die.attr('id')) === 2 || Number(die.attr('id')) === 7 ))	{
+	 	//can click 2, 7
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 4) && (Number(die.attr('id')) === 0 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 8 ))	{
+	 	//can click 0, 5, 8
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 5) && (Number(die.attr('id')) === 1 || Number(die.attr('id')) === 4 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 9 ))	{
+	 	//can click 1, 4, 6, 9
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 6) && (Number(die.attr('id')) === 2 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 7 || Number(die.attr('id')) === 10 ))	{
+	 	//can click 2, 5, 7, 10
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 7) && (Number(die.attr('id')) === 3 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 11 ))	{
+	 	//can click 3, 6, 11
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 8) && (Number(die.attr('id')) === 4 || Number(die.attr('id')) === 9 || Number(die.attr('id')) === 12 ))	{
+	 	//can click 4, 9, 12
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 9) && (Number(die.attr('id')) === 5 || Number(die.attr('id')) === 8 || Number(die.attr('id')) === 10 || Number(die.attr('id')) === 13 ))	{
+	 	//can click 5, 8, 10, 13
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 10) && (Number(die.attr('id')) === 6 || Number(die.attr('id')) === 9 || Number(die.attr('id')) === 11 || Number(die.attr('id')) === 14 ))	{
+	 	//can click 6, 9, 11, 14
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 11) && (Number(die.attr('id')) === 7 || Number(die.attr('id')) === 10 || Number(die.attr('id')) === 15 ))	{
+	 	//can click 7, 10, 15
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 12) && (Number(die.attr('id')) === 8 || Number(die.attr('id')) === 13 ))	{
+	 	//can click 8, 13
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 13) && (Number(die.attr('id')) === 9 || Number(die.attr('id')) === 12 || Number(die.attr('id')) === 14 ))	{
+	 	//can click 9, 12, 14
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 14) && (Number(die.attr('id')) === 10 || Number(die.attr('id')) === 13 || Number(die.attr('id')) === 15 ))	{
+	 	//can click 10, 13, 15
+	 		 return true;
+	 }
+
+	 if ((currentDieIndex === 15) && (Number(die.attr('id')) === 11 || Number(die.attr('id')) === 14 ))	{
+	 	//can click 11, 14
+	 		 return true;
+	 }
+
+	 else {
+	 		 return false;
+	 }
+
+}
+
+
+
 
 //verifies a word is in dictionary & adds points to score for valid words
 var verifyWords = function() {

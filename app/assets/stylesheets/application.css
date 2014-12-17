@@ -65,7 +65,24 @@ div.row {
   clear: both;
 }
 
-div.die {
+div.not-playable {
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+  border-radius: 5px;
+  background: red;
+  border: 3px solid royalblue;
+  float: left;
+  font-family: 'Orbitron';
+
+  text-align: center;
+  line-height: 160px;
+  color: midnightblue;
+  font-size: 100px;
+}
+
+
+div.playable {
   width: 150px;
   height: 150px;
   margin: 5px;
@@ -80,6 +97,7 @@ div.die {
   color: midnightblue;
   font-size: 100px;
 }
+
 
 a {
   color: midnightblue;
@@ -113,10 +131,25 @@ div.score {
   margin-bottom: 10px;
 }
 
+div.word-build {
+  border: 2px solid midnightblue;
+  width: 180px;
+  height: 80px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
 p.score{
   margin: 5px;
   color: midnightblue;
   font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+p.word-build{
+  margin: 5px;
+  color: midnightblue;
 }
 
 

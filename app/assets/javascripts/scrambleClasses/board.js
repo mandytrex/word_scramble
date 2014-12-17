@@ -3,10 +3,10 @@ function Board() {
 }
 
 Board.prototype.startGame = function() {
-			newDie = new Die();
-			newDie.setState();
+			newBoard = new Die();
+			newBoard.setState();
 			for (i=0; i < 16; i++) {
-				var eachDice = newDie.dice[i];
+				var eachDice = newBoard.dice[i];
 				this.tiles.push(eachDice);
 			}
 };
