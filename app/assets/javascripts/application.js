@@ -246,7 +246,7 @@ var checkAdjacent = function() {
 
 
 //verifies a word is in dictionary & adds points to score for valid words
-var verifyWords = function() {
+var verifyWord = function() {
 	var word = currentString;
 		for (d=0; d < boggleDictionary.length; d++) {	
 			if (word.toLowerCase() === boggleDictionary[d]) {
@@ -277,7 +277,7 @@ function submitWord(){
 		// if the word is long enough, add it to the word list
 		if (currentString.length >= 3){
 		guessedWords.push(currentString);
-			verifyWords();
+			verifyWord();
 		}
 
 		if (score >= 0) {
