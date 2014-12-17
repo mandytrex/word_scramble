@@ -49,7 +49,7 @@ var score = 0;
 mousedown = 0;
 
 //last clicked die
-var prevdie;
+var currentDieIndex;
 
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
@@ -122,15 +122,24 @@ var decreaseTime = function () {
  }
 
 
- var buildAWord = function(event) {
+// ROYAL BLUE dies are playable
+// die changes color to RED when clicked
+// RED dies become UNPLAYABLE
+
+var buildAWord = function(event) {
  	var die = event;
- 	console.log(die.text());
- 	currentString = currentString.concat(die.text());
- 	console.log(currentString);
- 	prevdie = Number(die.attr('id').substr(4, die.attr('id').length-1));
- 	if (mousedown == 0) {
- 		mousedown++;
- 	}
+ 	console.log("Current Letter: " + die.text());
+ 	//index(ID) of current die
+ 	if (die.css('background-color') !== 'red') {
+ 		die.css('background-color', 'red');
+ 		currentDieIndex = Number(die.attr('id'));
+ 		console.log("Current Die Index: " + currentDieIndex);
+ 		currentString = currentString.concat(die.text());
+ 		console.log(currentString);
+ 			if (mousedown == 0) {
+ 				mousedown++;
+ 			}	
+ 		}
  };
 
 //verifies a word is in dictionary & adds points to score for valid words
