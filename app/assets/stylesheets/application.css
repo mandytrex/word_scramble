@@ -14,15 +14,22 @@
  *= require_self
  */
 
-/*----- GOOGLE FONTS -----*/
+/*-------------- GOOGLE FONTS --------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Orbitron:400,700);
 @import url(http://fonts.googleapis.com/css?family=Rammetto+One|Fredoka+One|Sigmar+One|Fontdiner+Swanky|Goblin+One|Slackey);
 
-/*-----------------------*/
+/*-----------------------------------------------------------*/
+
+
+/*NAVBAR & GENERAL STYLING*/
+a {
+  color: midnightblue;
+  font-family: helvetica;
+}
 
 body {
-	background-color: white;
+  background-color: white;
   font-family: helvetica;
 }
 
@@ -30,14 +37,102 @@ h1.header {
   font-family: 'Slackey';
   color: midnightblue;
   margin-left: 20px;
+  line-height: 15px;
 }
 
-div.boggle-board {
-  width: 690px;
-  margin-right: auto;
-  margin-left: auto;
+a#navbar {
+  margin-left: 25px;
+/*  float: right;
+  margin-right: 50px;*/
+}
+/*
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+}*/
+
+/*-----------------------------------------------------------*/
+
+/*HIDDEN DIV*/
+div.hidden-game-div {
+  height: 0px;
+  width: 0px;
+  visibility: hidden;
 }
 
+
+/*-----------------------------------------------------------*/
+/*TIMER STYLE*/
+div.timer {
+  border: 2px solid midnightblue;
+  width: 180px;
+  height: 28px;
+  text-align: center;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+p.timer{
+  margin: 5px;
+  color: midnightblue;
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+
+/*-----------------------------------------------------------*/
+/*SCORE BOARD STYLE*/
+div.score {
+  border: 2px solid midnightblue;
+  width: 180px;
+  height: 28px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+p.score{
+  margin: 5px;
+  color: midnightblue;
+  font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+
+/*-----------------------------------------------------------*/
+/*BUTTON STYLING*/
+button.start {
+  margin-left: 20px;
+}
+
+button.submit-word {
+  margin-left: 20px;
+}
+
+
+/*-----------------------------------------------------------*/
+/*WORD BUILD STYLE*/
+div.word-build {
+  border: 2px solid midnightblue;
+  width: 180px;
+  height: 80px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+p.word-build{
+  margin: 5px;
+  color: midnightblue;
+}
+
+
+
+/*-----------------------------------------------------------*/
+/*ACCEPTED WORD LIST STYLE */
 div.word-list {
   color: midnightblue;
   width: 150px;
@@ -48,6 +143,20 @@ div.word-list {
   padding-top: 2px;
 }
 
+p.word {
+  margin-left: 5px;
+  margin-top: 2px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+p.verified-word {
+  margin-left: 5px;
+}
+
+
+/*-----------------------------------------------------------*/
+/*GAME HISTORY STYLING*/
 div.game-history {
   float: right;
   color: midnightblue;
@@ -58,9 +167,41 @@ div.game-history {
   padding-left: 5px;
 }
 
+p.past-scores {
+  margin-left: 5px;
+  line-height: 5px;
+}
+
+p.game-history {
+  margin-left: 5px;
+  margin-top: 2px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+
+/*-----------------------------------------------------------*/
+/*BOGGLE BOARD STYLING*/
+
+div.boggle-board {
+  width: 690px;
+  margin-right: auto;
+  margin-left: 150px;
+  margin-top: 65px;
+  display: inline-block;
+  float: left;
+}
+
+/*POSITIONS ALL DIVS ON THE LEFT OF BOARD*/
+div.position {
+  float: left;
+  margin-left: 5px;
+}
+
 div.row {
   width: 680px;
-  height: 100px;
+  height: 150px;
   margin: 0 auto;
   clear: both;
 }
@@ -96,96 +237,4 @@ div.playable {
   line-height: 160px;
   color: midnightblue;
   font-size: 100px;
-}
-
-
-a {
-  color: midnightblue;
-  font-family: helvetica;
-}
-
-div.timer {
-  border: 2px solid midnightblue;
-  width: 180px;
-  height: 28px;
-  text-align: center;
-  font-family: 'Orbitron', 'Courier New', monospace;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-p.timer{
-  margin: 5px;
-  color: midnightblue;
-  font-family: 'Orbitron', 'Courier New', monospace;
-}
-
-div.score {
-  border: 2px solid midnightblue;
-  width: 180px;
-  height: 28px;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'Orbitron', 'Courier New', monospace;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-div.word-build {
-  border: 2px solid midnightblue;
-  width: 180px;
-  height: 80px;
-  text-align: center;
-  font-weight: bold;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-p.score{
-  margin: 5px;
-  color: midnightblue;
-  font-family: 'Orbitron', 'Courier New', monospace;
-}
-
-p.word-build{
-  margin: 5px;
-  color: midnightblue;
-}
-
-
-ul#navbar {
-  float: right;
-  margin-right: 20px;
-}
-
-button.start {
-  margin-left: 20px;
-}
-
-button.submit-word {
-  margin-left: 20px;
-}
-
-
-p.word {
-  margin-left: 5px;
-  margin-top: 2px;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-p.verified-word {
-  margin-left: 5px;
-}
-
-p.past-scores {
-  margin-left: 5px;
-  line-height: 5px;
-}
-
-p.game-history {
-  margin-left: 5px;
-  margin-top: 2px;
-  text-decoration: underline;
-  font-weight: bold;
 }

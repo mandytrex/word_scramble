@@ -9,17 +9,18 @@
 <body>
 	
 	<header>
-		<ul id="navbar">
+		<h1 class="header"> Word Scramble</h1>
+		<a id="navbar">
 			<% if session[:current_user_id] %>
 				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :game, :log_out] } %>
 			<% else %>
 				<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :game_guest] } %>
 			<% end %>
 	
-		</ul>
+		</a>
 </header>
 
-<h1 class="header"> Word Scramble</h1>
+
 	<% if session[:current_user_id] %>
 				<br><br>
 		<div class="game-history">

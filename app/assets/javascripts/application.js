@@ -262,7 +262,6 @@ var verifyWord = function() {
 				if (word.length === 6) {
 					score += 8;
 				}
-
 				if (word.length >= 7) {
 					score += 10;
 				}
@@ -276,7 +275,7 @@ function submitWord(){
 	if (mousedown == 1){
 		// if the word is long enough, add it to the word list
 		if (currentString.length >= 3){
-		guessedWords.push(currentString);
+			guessedWords.push(currentString);
 			verifyWord();
 		}
 
