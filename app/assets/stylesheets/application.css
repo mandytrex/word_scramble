@@ -29,7 +29,7 @@ a {
 }
 
 body {
-  background-color: white;
+  background-color: ghostwhite;
   font-family: helvetica;
 }
 
@@ -73,6 +73,35 @@ div.hidden-game-div {
   visibility: hidden;
 }
 
+div.game-instructions {
+  border: 2px solid midnightblue;
+  height: 213px;
+  width: 190px;
+  margin-left: 20px;
+  padding-top: 3px;
+}
+
+p.game-instructions {
+  margin-left: 10px;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+ul.game-instructions {
+  font-size: 14px;
+  line-height: 15px;
+}
+
+p.instruction-title {
+  margin-left: 5px;
+  margin-top: 2px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+  color: midnightblue;
+  font-family: 'Courier New';
+}
+
 
 /*-----------------------------------------------------------*/
 /*FORMS*/
@@ -108,7 +137,6 @@ div.form {
 /*-----------------------------------------------------------*/
 /*TIMER STYLE*/
 div.timer {
-  border: 2px solid midnightblue;
   width: 180px;
   height: 28px;
   text-align: center;
@@ -117,10 +145,16 @@ div.timer {
   margin-bottom: 10px;
 }
 
+div#timer-border {
+  border: 2px solid midnightblue;
+}
+
 p.timer{
   margin: 5px;
   color: midnightblue;
   font-family: 'Orbitron', 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 
@@ -129,7 +163,7 @@ p.timer{
 div.score {
   border: 2px solid midnightblue;
   width: 180px;
-  height: 28px;
+  height: 23px;
   text-align: center;
   font-weight: bold;
   font-family: 'Orbitron', 'Courier New', monospace;
@@ -141,26 +175,42 @@ p.score{
   margin: 5px;
   color: midnightblue;
   font-family: 'Orbitron', 'Courier New', monospace;
+  font-weight: bold;
 }
 
 
 /*-----------------------------------------------------------*/
 /*BUTTON STYLING*/
-button.start {
+input.start {
   margin-left: 20px;
+  width: 180px;
+  height: 100px;
 }
 
+input.submit-word {
+  margin-left: 20px;
+  width: 180px;
+  height: 100px;
+}
+
+input.undo {
+  margin-left: 20px;
+  width: 180px;
+  height: 100px;
+}
 button.submit-word {
   margin-left: 20px;
 }
 
 
+
 /*-----------------------------------------------------------*/
 /*WORD BUILD STYLE*/
 div.word-build {
+  font-family: 'Courier New';
   border: 2px solid midnightblue;
-  width: 180px;
-  height: 80px;
+  width: 190px;
+  height: 50px;
   text-align: center;
   font-weight: bold;
   margin-left: 20px;
@@ -170,6 +220,8 @@ div.word-build {
 p.word-build{
   margin: 5px;
   color: midnightblue;
+  line-height: 6px;
+  font-size: 16px;
 }
 
 
@@ -177,9 +229,10 @@ p.word-build{
 /*-----------------------------------------------------------*/
 /*ACCEPTED WORD LIST STYLE */
 div.word-list {
+  font-family: 'Courier New';
   color: midnightblue;
   width: 180px;
-  height: 150px;
+  height: 180px;
   border: 2px solid midnightblue;
   margin-left: 20px;
   float: left;
@@ -212,6 +265,8 @@ div.game-history {
   border: 2px solid midnightblue;
   margin-left: 20px;
   padding-left: 5px;
+  margin-right: 100px;
+  margin-top: 50px;
 }
 
 p.past-scores {
@@ -234,8 +289,9 @@ p.game-history {
 div.boggle-board {
   width: 690px;
   margin-right: auto;
-  margin-left: 150px;
-  margin-top: 65px;
+  margin-left: 120px;
+  margin-top: 40px;
+  margin-bottom: 150px;
   display: inline-block;
   float: left;
 }
@@ -243,7 +299,7 @@ div.boggle-board {
 /*POSITIONS ALL DIVS ON THE LEFT OF BOARD*/
 div.position {
   float: left;
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 div.row {
@@ -261,7 +317,7 @@ div.not-playable {
   background: red;
   border: 3px solid royalblue;
   float: left;
-  font-family: 'Orbitron';
+  font-family: monospace;
 
   text-align: center;
   line-height: 160px;
@@ -278,10 +334,10 @@ div.playable {
   background: royalblue;
   border: 3px solid royalblue;
   float: left;
-  font-family: 'Orbitron';
+  font-family: monospace;
 
   text-align: center;
-  line-height: 160px;
+  line-height: 140px;
   color: midnightblue;
   font-size: 100px;
 }

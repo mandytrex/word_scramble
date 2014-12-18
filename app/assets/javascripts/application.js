@@ -24,8 +24,10 @@ if ($('#hidden-game-div')) {
 	  // console.log("Working!");
 	  startGame();
 	  $('.start').on('click', function() {
+	  	$('.start').hide();
 			makeGame();
 	  	fillBoard();
+	  	alert("You have 2 Minutes!");
 	  	setTimeout('decreaseTime()',1000);
 	  });
 	  $( ".boggle-board" ).on("mousedown", ".die", function() {
@@ -39,6 +41,8 @@ if ($('#hidden-game-div')) {
 	   	$('div.die').removeClass('not-playable');
 	   	$('div.die').addClass('playable');
 	   });
+		$('.undo').on('click', undoWord);
+		// $.get('/games').done(renderGames);
 	})
 }
 
@@ -48,13 +52,10 @@ var guessedWords = [];
 var currentString = "";
 //score
 var score = 0;
-
 //if string is being currently built
 mousedown = 0;
-
 //last clicked die div
 var die;
-
 //index of last clicked die
 var currentDieIndex = null;
 
@@ -121,14 +122,14 @@ var decreaseTime = function () {
   currentSeconds = secs % 60;
    if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
    	 secs--;
+   	 $('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
+   if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
+   	alert("TIME'S UP! Game over. Refresh to play again.");
+   } 
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
 
-
-// ROYAL BLUE dies are playable
-// die changes color to RED when clicked
-// RED dies become UNPLAYABLE
 
 var buildAWord = function(event) {
  	die = event;
@@ -149,6 +150,15 @@ var buildAWord = function(event) {
  			}	
  		}
  };
+
+var undoWord = function() {
+			currentString = "";
+	   	currentDieIndex = null;
+	   	$('p.word-build').empty();
+	   	$('div.die').removeClass('not-playable');
+	   	$('div.die').addClass('playable');
+}
+
 
 var checkAdjacent = function() {
 	 // debugger
@@ -328,7 +338,6 @@ var checkAdjacent = function() {
 
 
 
-
 //verifies a word is in dictionary & adds points to score for valid words
 var verifyWord = function() {
 	var word = currentString;
@@ -372,13 +381,12 @@ function submitWord(){
 
 // GAME HISTORY FUNCTIONS
 
+
 // var renderGames = function(games) {
 //   games.forEach(function(game) {
 //     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
 //     scores.addClass('past-scores');
-//     var gameDiv = $('<div>').addClass('game-history');
-//     scores.appendTo(gameDiv);
-//     gameDiv.appendTo($('div.position'));
+//     scores.appendTo($('.game-history'));
 //   });
 // };
 
@@ -391,9 +399,30 @@ function submitWord(){
 // };
 
 
+// Assemble the necessary data
+  // var newScore = $('p.score').val();
+  // var newContent = $('#new-content').val();
+  // var noteData = {
+  //   note: {
+  //     title: newTitle,
+  //     score: newScore
+  //   }
+  // };
+
+// // Send the post request to create a new note
+//   $.post('/games', noteData).done(function(game) {
+//     // Add a list item to the notes nav bar
+//     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+//     scores.addClass('past-scores');
+//     var gameDiv = $('<div>').addClass('game-history');
+//     scores.appendTo(gameDiv);
+//     // Render the new note in the main note view area
+//     renderGames(game);
+//   });
+// }
 
 
-// $.get('/games').done(renderGames);
+
 
 
 
