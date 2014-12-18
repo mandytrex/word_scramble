@@ -20,7 +20,7 @@
 
 if ($('#hidden-game-div')) {
 	$(function() {
-		// $.get('/games').done(renderGames);
+		$.get('/games').done(renderGames);
 	  // console.log("Working!");
 	  startGame();
 	  $('.start').on('click', function() {
@@ -382,13 +382,13 @@ function submitWord(){
 // GAME HISTORY FUNCTIONS
 
 
-// var renderGames = function(games) {
-//   games.forEach(function(game) {
-//     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
-//     scores.addClass('past-scores');
-//     scores.appendTo($('.game-history'));
-//   });
-// };
+var renderGames = function(games) {
+  games.forEach(function(game) {
+    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+    scores.addClass('past-scores');
+    scores.appendTo($('.game-history'));
+  });
+};
 
 
 // var loadGame = function(noteId) {
@@ -399,25 +399,16 @@ function submitWord(){
 // };
 
 
-// Assemble the necessary data
+// Assemble data
   // var newScore = $('p.score').val();
-  // var newContent = $('#new-content').val();
-  // var noteData = {
+  // var gameData = {
   //   note: {
-  //     title: newTitle,
   //     score: newScore
   //   }
   // };
 
 // // Send the post request to create a new note
-//   $.post('/games', noteData).done(function(game) {
-//     // Add a list item to the notes nav bar
-//     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
-//     scores.addClass('past-scores');
-//     var gameDiv = $('<div>').addClass('game-history');
-//     scores.appendTo(gameDiv);
-//     // Render the new note in the main note view area
-//     renderGames(game);
+//   $.post('/games', gameData).done(function(game) {
 //   });
 // }
 

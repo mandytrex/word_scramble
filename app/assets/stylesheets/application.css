@@ -84,7 +84,7 @@ div.game-instructions {
 p.game-instructions {
   margin-left: 10px;
   line-height: 20px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 ul.game-instructions {
@@ -95,6 +95,7 @@ ul.game-instructions {
 p.instruction-title {
   margin-left: 5px;
   margin-top: 2px;
+  margin-bottom: 0;
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
@@ -143,6 +144,7 @@ div.timer {
   font-family: 'Orbitron', 'Courier New', monospace;
   margin-left: 20px;
   margin-bottom: 10px;
+  margin-top: 8px;
 }
 
 div#timer-border {
@@ -184,23 +186,34 @@ p.score{
 input.start {
   margin-left: 20px;
   width: 180px;
-  height: 100px;
+  height: 40px;
+  background-color: gold;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 input.submit-word {
   margin-left: 20px;
   width: 180px;
-  height: 100px;
+  height: 30px;
+  background-color: gold;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 input.undo {
   margin-left: 20px;
   width: 180px;
-  height: 100px;
+  height: 30px;
+  background-color: gold;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 7px;
 }
-button.submit-word {
+/*button.submit-word {
   margin-left: 20px;
-}
+
+}*/
 
 
 
@@ -232,7 +245,7 @@ div.word-list {
   font-family: 'Courier New';
   color: midnightblue;
   width: 180px;
-  height: 180px;
+  height: 165px;
   border: 2px solid midnightblue;
   margin-left: 20px;
   float: left;
@@ -314,7 +327,7 @@ div.not-playable {
   height: 150px;
   margin: 5px;
   border-radius: 5px;
-  background: red;
+  background: gold;
   border: 3px solid royalblue;
   float: left;
   font-family: monospace;

@@ -9,7 +9,7 @@
 <body>
 	
 	<header>
-		<h1 class="header"> Word Scramble</h1>
+		<h1 class="header">Word Scramble</h1>
 		<a id="navbar">
 			<% if session[:current_user_id] %>
 				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :game, :log_out] } %>
@@ -20,7 +20,11 @@
 		</a>
 </header>
 
-
+<% if session[:current_user_id] %>
+<div class="game-history">
+	<p class="word">Game History: </p>
+	</div>
+<% end %>
 <%= yield %>
 
 </body>
