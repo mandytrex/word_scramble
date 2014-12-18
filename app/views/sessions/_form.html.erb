@@ -1,11 +1,10 @@
 <%= form_tag sessions_path do %>
-	<div class="input">
-	  <%= label_tag :username %>
+	<div class="username">
+	  <%= label_tag :username, "Username: " %>
 	  <%= text_field_tag :username %>
 	</div>
-
-	<div class="input">
-	  <%= label_tag :password %>
+	<div class="password">
+	  <%= label_tag :password, "Password:    " %>
 	  <%= password_field_tag :password %>
 	</div>
 

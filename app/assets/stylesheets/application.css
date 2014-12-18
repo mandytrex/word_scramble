@@ -40,6 +40,17 @@ h1.header {
   line-height: 15px;
 }
 
+h1 {
+  color: midnightblue;
+  margin-left: 10px;
+  line-height: 15px;
+}
+
+hr {
+  width: 50%;
+  margin-left: 2px;
+}
+
 a#navbar {
   margin-left: 25px;
 /*  float: right;
@@ -52,6 +63,7 @@ a#navbar {
     width:960px;
 }*/
 
+
 /*-----------------------------------------------------------*/
 
 /*HIDDEN DIV*/
@@ -61,6 +73,37 @@ div.hidden-game-div {
   visibility: hidden;
 }
 
+
+/*-----------------------------------------------------------*/
+/*FORMS*/
+
+div.form {
+    margin-left: 10px;
+}
+
+/*shows what fields have errors in a form, if the form page doesn't save and is rerendered*/
+.field_with_errors input {
+    border: 2px solid red;
+}
+
+.username {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.password {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.password-confirm {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.form-position {
+  margin-left: 10px;
+}
 
 /*-----------------------------------------------------------*/
 /*TIMER STYLE*/
@@ -135,12 +178,13 @@ p.word-build{
 /*ACCEPTED WORD LIST STYLE */
 div.word-list {
   color: midnightblue;
-  width: 150px;
-  height: 200px;
+  width: 180px;
+  height: 150px;
   border: 2px solid midnightblue;
   margin-left: 20px;
   float: left;
   padding-top: 2px;
+  overflow: auto;
 }
 
 p.word {
@@ -148,10 +192,13 @@ p.word {
   margin-top: 2px;
   text-decoration: underline;
   font-weight: bold;
+  text-align: center;
+  color: midnightblue;
 }
 
 p.verified-word {
   margin-left: 5px;
+  line-height: 3px;
 }
 
 

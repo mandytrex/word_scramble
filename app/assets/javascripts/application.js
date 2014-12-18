@@ -156,89 +156,173 @@ var checkAdjacent = function() {
 	 		return true;
 	 }
 
-	 if ((currentDieIndex === 0) && (Number(die.attr('id')) === 4 || Number(die.attr('id')) === 1 ))	{
-	 	//can click 4 or 1
-	 		return true;
-	 } 
+	 if ((currentDieIndex === 0) 
+	 	&& (Number(die.attr('id')) === 4 
+	 		|| Number(die.attr('id')) === 1 
+	 		|| Number(die.attr('id')) === 5 ))	{
+			 		//can click 4 or 1
+			 		return true;
+			 } 
 
-	 if ((currentDieIndex === 1) && (Number(die.attr('id')) === 0 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 2 ))	{
-	 	//can click 0, 5, 2
-	 	  return true;
-	 }
+	 if ((currentDieIndex === 1) 
+	 	&& (Number(die.attr('id')) === 0 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 2 
+	 		|| Number(die.attr('id')) === 4 
+	 		|| Number(die.attr('id')) === 6 ))	{
+			 		//can click 0, 5, 2
+			 	  return true;
+			 }
 
-	 if ((currentDieIndex === 2) && (Number(die.attr('id')) === 1 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 3 ))	{
-	 	//can click 1, 6, 3
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 2) 
+	 	&& (Number(die.attr('id')) === 1 
+	 		|| Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 3 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 7 ))	{
+			 		//can click 1, 6, 3
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 3) && (Number(die.attr('id')) === 2 || Number(die.attr('id')) === 7 ))	{
-	 	//can click 2, 7
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 3) 
+	 	&& (Number(die.attr('id')) === 2 
+	 		|| Number(die.attr('id')) === 7 
+	 		|| Number(die.attr('id')) === 6 ))	{
+			 		//can click 2, 7
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 4) && (Number(die.attr('id')) === 0 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 8 ))	{
-	 	//can click 0, 5, 8
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 4) 
+	 	&& (Number(die.attr('id')) === 0 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 8 
+	 		|| Number(die.attr('id')) === 1 
+	 		|| Number(die.attr('id')) === 9 ))	{
+			 		//can click 0, 5, 8
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 5) && (Number(die.attr('id')) === 1 || Number(die.attr('id')) === 4 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 9 ))	{
-	 	//can click 1, 4, 6, 9
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 5) 
+	 	&& (Number(die.attr('id')) === 1 
+	 		|| Number(die.attr('id')) === 4 
+	 		|| Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 0 
+	 		|| Number(die.attr('id')) === 2 
+	 		|| Number(die.attr('id')) === 8 
+	 		|| Number(die.attr('id')) === 10 ))	{
+			 		//can click 1, 4, 6, 9
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 6) && (Number(die.attr('id')) === 2 || Number(die.attr('id')) === 5 || Number(die.attr('id')) === 7 || Number(die.attr('id')) === 10 ))	{
-	 	//can click 2, 5, 7, 10
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 6) 
+	 	&& (Number(die.attr('id')) === 2 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 7 
+	 		|| Number(die.attr('id')) === 10 
+	 		|| Number(die.attr('id')) === 1 
+	 		|| Number(die.attr('id')) === 3 
+	 		|| Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 11 ))	{
+			 		//can click 2, 5, 7, 10
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 7) && (Number(die.attr('id')) === 3 || Number(die.attr('id')) === 6 || Number(die.attr('id')) === 11 ))	{
-	 	//can click 3, 6, 11
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 7) 
+	 	&& (Number(die.attr('id')) === 3 
+	 		|| Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 11 
+	 		|| Number(die.attr('id')) === 2 
+	 		|| Number(die.attr('id')) === 10 ))	{
+			 		//can click 3, 6, 11
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 8) && (Number(die.attr('id')) === 4 || Number(die.attr('id')) === 9 || Number(die.attr('id')) === 12 ))	{
-	 	//can click 4, 9, 12
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 8) 
+	 	&& (Number(die.attr('id')) === 4 
+	 		|| Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 12 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 13 ))	{
+			 		//can click 4, 9, 12
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 9) && (Number(die.attr('id')) === 5 || Number(die.attr('id')) === 8 || Number(die.attr('id')) === 10 || Number(die.attr('id')) === 13 ))	{
-	 	//can click 5, 8, 10, 13
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 9) 
+	 	&& (Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 8 
+	 		|| Number(die.attr('id')) === 10 
+	 		|| Number(die.attr('id')) === 13 
+	 		|| Number(die.attr('id')) === 4 
+	 		|| Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 12 
+	 		|| Number(die.attr('id')) === 14 ))	{
+			 		//can click 5, 8, 10, 13
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 10) && (Number(die.attr('id')) === 6 || Number(die.attr('id')) === 9 || Number(die.attr('id')) === 11 || Number(die.attr('id')) === 14 ))	{
-	 	//can click 6, 9, 11, 14
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 10) 
+	 	&& (Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 11 
+	 		|| Number(die.attr('id')) === 14 
+	 		|| Number(die.attr('id')) === 5 
+	 		|| Number(die.attr('id')) === 7 
+	 		|| Number(die.attr('id')) === 13 
+	 		|| Number(die.attr('id')) === 15 ))	{
+			 		//can click 6, 9, 11, 14
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 11) && (Number(die.attr('id')) === 7 || Number(die.attr('id')) === 10 || Number(die.attr('id')) === 15 ))	{
-	 	//can click 7, 10, 15
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 11) 
+	 	&& (Number(die.attr('id')) === 7 
+	 		|| Number(die.attr('id')) === 10 
+	 		|| Number(die.attr('id')) === 15 
+	 		|| Number(die.attr('id')) === 6 
+	 		|| Number(die.attr('id')) === 14 ))	{
+			 		//can click 7, 10, 15
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 12) && (Number(die.attr('id')) === 8 || Number(die.attr('id')) === 13 ))	{
-	 	//can click 8, 13
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 12) 
+	 	&& (Number(die.attr('id')) === 8 
+	 		|| Number(die.attr('id')) === 13 
+	 		|| Number(die.attr('id')) === 9 ))	{
+			 		//can click 8, 13
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 13) && (Number(die.attr('id')) === 9 || Number(die.attr('id')) === 12 || Number(die.attr('id')) === 14 ))	{
-	 	//can click 9, 12, 14
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 13) 
+	 	&& (Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 12 
+	 		|| Number(die.attr('id')) === 14 
+	 		|| Number(die.attr('id')) === 8 
+	 		|| Number(die.attr('id')) === 10 ))	{
+			 		//can click 9, 12, 14
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 14) && (Number(die.attr('id')) === 10 || Number(die.attr('id')) === 13 || Number(die.attr('id')) === 15 ))	{
-	 	//can click 10, 13, 15
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 14) 
+	 	&& (Number(die.attr('id')) === 10 
+	 		|| Number(die.attr('id')) === 13 
+	 		|| Number(die.attr('id')) === 15 
+	 		|| Number(die.attr('id')) === 9 
+	 		|| Number(die.attr('id')) === 11 ))	{
+			 		//can click 10, 13, 15
+			 		 return true;
+			 }
 
-	 if ((currentDieIndex === 15) && (Number(die.attr('id')) === 11 || Number(die.attr('id')) === 14 ))	{
-	 	//can click 11, 14
-	 		 return true;
-	 }
+	 if ((currentDieIndex === 15) 
+	 	&& (Number(die.attr('id')) === 11 
+	 		|| Number(die.attr('id')) === 14 
+	 		|| Number(die.attr('id')) === 10 ))	{
+			 		//can click 11, 14
+			 		 return true;
+			 }
 
 	 else {
-	 		 return false;
-	 }
+			 		 return false;
+			 }
 
 }
 
@@ -288,10 +372,28 @@ function submitWord(){
 
 // GAME HISTORY FUNCTIONS
 
-var renderGames = function(games) {
-  games.forEach(function(game) {
-    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
-    scores.addClass('past-scores');
-    scores.appendTo($('div.game-history'));
-  });
-};
+// var renderGames = function(games) {
+//   games.forEach(function(game) {
+//     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+//     scores.addClass('past-scores');
+//     var gameDiv = $('<div>').addClass('game-history');
+//     scores.appendTo(gameDiv);
+//     gameDiv.appendTo($('div.position'));
+//   });
+// };
+
+
+// var loadGame = function(noteId) {
+//   // This ajax request will only receive a successful response if I am logged in
+//   // and I am the correct user, etc. If successful, the note I just received will
+//   // be rendered on the page.
+//   $.get('/games/' + gameId).done(renderGames);
+// };
+
+
+
+
+// $.get('/games').done(renderGames);
+
+
+

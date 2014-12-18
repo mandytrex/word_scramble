@@ -1,19 +1,22 @@
+<div class="form-position">
 <h1>New User</h1>
+<hr>
 <%= form_for @user do |f| %>
-  <div class="input">
-    <%= f.label :username %>
+  <div class="username">
+    <%= f.label :username, "Username:" %>
     <%= f.text_field :username %>
   </div>
 
-  <div class="input">
-    <%= f.label :password %>
+  <div class="password">
+    <%= f.label :password, "Password:   " %>
     <%= f.password_field :password %>
   </div>
   
-  <div class="input">
-    <%= f.label :password_confirmation %>
+  <div class="password-confirm">
+    <%= f.label :password_confirmation, "Confirm Password:" %>
     <%= f.password_field :password_confirmation %>
   </div>
 
   <%= f.submit "Submit", :id=>"submit" %>
   <% end %>
+</div>
