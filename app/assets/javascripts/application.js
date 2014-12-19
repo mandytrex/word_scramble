@@ -46,6 +46,12 @@ if ($('#hidden-game-div')) {
 }
 
 
+if ($('#user-view')) {
+	// $(function() {
+		$.get('/games').done(renderGames);
+	// })
+}
+
 //HELPER VARIABLES
 
 //array of guessed words (valid & invalid)
@@ -104,7 +110,7 @@ var fillBoard = function() {
 
 
 // COUNTDOWN TIMER
-var mins = 3;
+var mins = 1;
 var secs = mins * 60;
 var currentSeconds = 0;
 var currentMinutes = 0;
@@ -118,6 +124,7 @@ var decreaseTime = function () {
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    		if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
    			alert("TIME'S UP! Game over. Refresh to play again.");
+   			createGameHistory();
    			$('div.die').removeClass('playable');
 	   		$('div.die').addClass('not-playable');
 	   		var reset = $('<p>').addClass('refresh').text('REFRESH TO PLAY AGAIN :)');
@@ -355,12 +362,10 @@ function submitWord(){
 		}
 
 		if (score >= 0) {
-			$('p.score').text('Score: ' + score);
+			$('p.score').text(score);
 		}
 	}
 }
-
-
 
 
 // GAME HISTORY FUNCTIONS
@@ -371,3 +376,28 @@ var renderGames = function(games) {
     scores.appendTo($('.game-history'));
   });
 };
+
+
+var createGameHistory = function() {
+
+	var currentGameScore = Number($('p.score').text());
+	var gameData = {
+		game: {
+			total_score: currentGameScore
+		}
+	};
+
+ $.post('/games', gameData).done(function(game) {
+    // Add a new score to the game history div
+    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+    scores.addClass('past-scores');
+    scores.appendTo($('.game-history'));
+
+    // Render the new score in game history view area
+    renderGames(game);
+  });
+}
+
+
+
+

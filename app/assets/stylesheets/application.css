@@ -174,13 +174,14 @@ p.timer{
 /*SCORE BOARD STYLE*/
 div.score {
   border: 2px solid midnightblue;
-  width: 180px;
-  height: 23px;
+  width: 190px;
+  height: 30px;
   text-align: center;
   font-weight: bold;
   font-family: 'Orbitron', 'Courier New', monospace;
   margin-left: 20px;
   margin-bottom: 10px;
+  color: midnightblue;
 }
 
 p.score{
@@ -188,7 +189,9 @@ p.score{
   color: midnightblue;
   font-family: 'Orbitron', 'Courier New', monospace;
   font-weight: bold;
+  line-height: 5px;
 }
+
 
 
 /*-----------------------------------------------------------*/
@@ -290,6 +293,7 @@ div.game-history {
   padding-left: 5px;
   margin-right: 100px;
   margin-top: 50px;
+  overflow: auto;
 }
 
 p.past-scores {
