@@ -66,6 +66,7 @@ var currentDieIndex = null;
 //START game by generating array of 16 dice
 var startGame = function() {
   game.start();
+}
 
 
 // makes the board element on html page
