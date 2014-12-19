@@ -112,7 +112,7 @@ var fillBoard = function() {
 }
 
 
-var mins = 2;
+var mins = 1;
 var secs = mins * 60;
 var currentSeconds = 0;
 var currentMinutes = 0;
@@ -128,6 +128,8 @@ var decreaseTime = function () {
    	alert("TIME'S UP! Game over. Refresh to play again.");
    		$('div.die').removeClass('playable');
 	   	$('div.die').addClass('not-playable');
+	   	var reset = $('<p>').addClass('refresh').text('REFRESH TO PLAY AGAIN :)');
+	   	$('div.position').prepend(reset);
    } 
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
@@ -161,7 +163,7 @@ var undoWord = function() {
 	   	$('div.die').addClass('playable');
 }
 
-
+//checks for touching dice
 var checkAdjacent = function() {
 	 // debugger
 	 if (currentDieIndex === null ) {
@@ -172,7 +174,6 @@ var checkAdjacent = function() {
 	 	&& (Number(die.attr('id')) === 4 
 	 		|| Number(die.attr('id')) === 1 
 	 		|| Number(die.attr('id')) === 5 ))	{
-			 		//can click 4 or 1
 			 		return true;
 			 } 
 
@@ -182,7 +183,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 4 
 	 		|| Number(die.attr('id')) === 6 ))	{
-			 		//can click 0, 5, 2
 			 	  return true;
 			 }
 
@@ -192,7 +192,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 3 
 	 		|| Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 7 ))	{
-			 		//can click 1, 6, 3
 			 		 return true;
 			 }
 
@@ -200,7 +199,6 @@ var checkAdjacent = function() {
 	 	&& (Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 7 
 	 		|| Number(die.attr('id')) === 6 ))	{
-			 		//can click 2, 7
 			 		 return true;
 			 }
 
@@ -210,7 +208,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 1 
 	 		|| Number(die.attr('id')) === 9 ))	{
-			 		//can click 0, 5, 8
 			 		 return true;
 			 }
 
@@ -223,7 +220,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 10 ))	{
-			 		//can click 1, 4, 6, 9
 			 		 return true;
 			 }
 
@@ -236,7 +232,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 3 
 	 		|| Number(die.attr('id')) === 9 
 	 		|| Number(die.attr('id')) === 11 ))	{
-			 		//can click 2, 5, 7, 10
 			 		 return true;
 			 }
 
@@ -246,7 +241,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 11 
 	 		|| Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 10 ))	{
-			 		//can click 3, 6, 11
 			 		 return true;
 			 }
 
@@ -256,7 +250,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 12 
 	 		|| Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 13 ))	{
-			 		//can click 4, 9, 12
 			 		 return true;
 			 }
 
@@ -269,7 +262,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 12 
 	 		|| Number(die.attr('id')) === 14 ))	{
-			 		//can click 5, 8, 10, 13
 			 		 return true;
 			 }
 
@@ -282,7 +274,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 7 
 	 		|| Number(die.attr('id')) === 13 
 	 		|| Number(die.attr('id')) === 15 ))	{
-			 		//can click 6, 9, 11, 14
 			 		 return true;
 			 }
 
@@ -292,7 +283,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 15 
 	 		|| Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 14 ))	{
-			 		//can click 7, 10, 15
 			 		 return true;
 			 }
 
@@ -300,7 +290,6 @@ var checkAdjacent = function() {
 	 	&& (Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 13 
 	 		|| Number(die.attr('id')) === 9 ))	{
-			 		//can click 8, 13
 			 		 return true;
 			 }
 
@@ -310,7 +299,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 14 
 	 		|| Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 10 ))	{
-			 		//can click 9, 12, 14
 			 		 return true;
 			 }
 
@@ -320,7 +308,6 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 15 
 	 		|| Number(die.attr('id')) === 9 
 	 		|| Number(die.attr('id')) === 11 ))	{
-			 		//can click 10, 13, 15
 			 		 return true;
 			 }
 
@@ -328,7 +315,6 @@ var checkAdjacent = function() {
 	 	&& (Number(die.attr('id')) === 11 
 	 		|| Number(die.attr('id')) === 14 
 	 		|| Number(die.attr('id')) === 10 ))	{
-			 		//can click 11, 14
 			 		 return true;
 			 }
 
@@ -337,7 +323,6 @@ var checkAdjacent = function() {
 			 }
 
 }
-
 
 
 //verifies a word is in dictionary & adds points to score for valid words
@@ -381,9 +366,15 @@ function submitWord(){
 }
 
 
+
+
+
+
+
+
+
+
 // GAME HISTORY FUNCTIONS
-
-
 var renderGames = function(games) {
   games.forEach(function(game) {
     var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);

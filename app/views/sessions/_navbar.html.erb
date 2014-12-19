@@ -10,9 +10,6 @@
 <% end %>
 
 <% if navbar.include? (:log_in) %>
-		<%= link_to "Log In", login_path %> | 
+		<%= link_to "Log In", login_path %>
 <% end %>
 
-<% if navbar.include? (:game_guest) %>
-<%= link_to "Play as a Guest!", root_path %>
-<% end %>

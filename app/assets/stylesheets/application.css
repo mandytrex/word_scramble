@@ -22,16 +22,13 @@
 /*-----------------------------------------------------------*/
 
 
-div#modal {
-  position: fixed;
-  z-index: 10;
-  background: rgba(0,0,0,.8);
-  height: 500px;
-  width: 500px;
-  display:none;
-  color: whitesmoke;
-  top:20%;
-  left:30%;
+p.refresh {
+  font-family: 'Orbitron';
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  color: darkred;
+  line-height: 5px;
 }
 
 /*NAVBAR & GENERAL STYLING*/
@@ -91,6 +88,7 @@ div.game-instructions {
   width: 190px;
   margin-left: 20px;
   padding-top: 3px;
+  color: midnightblue;
 }
 
 p.game-instructions {
