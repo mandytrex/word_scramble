@@ -18,16 +18,15 @@
 //= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
+// on load, click, mouse down functions
 if ($('#hidden-game-div')) {
 	$(function() {
-		$.get('/games').done(renderGames);
-	  // console.log("Working!");
 	  startGame();
 	  $('.start').on('click', function() {
 	  	$('.start').hide();
 			makeGame();
 	  	fillBoard();
-	  	alert("You have 2 Minutes!");
+	  	alert("You have 3 MINUTES to play!");
 	  	setTimeout('decreaseTime()',1000);
 	  });
 	  $( ".boggle-board" ).on("mousedown", ".die", function() {
@@ -42,13 +41,16 @@ if ($('#hidden-game-div')) {
 	   	$('div.die').addClass('playable');
 	   });
 		$('.undo').on('click', undoWord);
-		// $.get('/games').done(renderGames);
+		$.get('/games').done(renderGames);
 	})
 }
 
-//array of guessed words
+
+//HELPER VARIABLES
+
+//array of guessed words (valid & invalid)
 var guessedWords = [];
-//current word
+//current word being built
 var currentString = "";
 //score
 var score = 0;
@@ -60,6 +62,13 @@ var die;
 var currentDieIndex = null;
 
 
+
+//START game by generating array of 16 dice
+var startGame = function() {
+  game.start();
+
+
+// makes the board element on html page
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
     var rowDiv = $('<div>').addClass('row').appendTo($('body'))
@@ -71,47 +80,29 @@ var makeGame = function() {
   }
 };
 
-var startGame = function() {
-  game.start();
-}
-
+//inserts dice from the array into  proper div on document
 var fillBoard = function() {
 	var letterArray = game.board.tiles;
-	var letter0 = letterArray[0];
-	var letter1 = letterArray[1];
-	var letter2 = letterArray[2];
-	var letter3 = letterArray[3];
-	var letter4 = letterArray[4];
-	var letter5 = letterArray[5];
-	var letter6 = letterArray[6];
-	var letter7 = letterArray[7];
-	var letter8 = letterArray[8];
-	var letter9 = letterArray[9];
-	var letter10 = letterArray[10];
-	var letter11 = letterArray[11];
-	var letter12 = letterArray[12];
-	var letter13 = letterArray[13];
-	var letter14 = letterArray[14];
-	var letter15 = letterArray[15];
-	$('div#0').append(letter0);
-	$('div#1').append(letter1);
-	$('div#2').append(letter2);
-	$('div#3').append(letter3);
-	$('div#4').append(letter4);
-	$('div#5').append(letter5);
-	$('div#6').append(letter6);
-	$('div#7').append(letter7);
-	$('div#8').append(letter8);
-	$('div#9').append(letter9);
-	$('div#10').append(letter10);
-	$('div#11').append(letter11);
-	$('div#12').append(letter12);
-	$('div#13').append(letter13);
-	$('div#14').append(letter14);
-	$('div#15').append(letter15);
+	$('div#0').append(letterArray[0]);
+	$('div#1').append(letterArray[1]);
+	$('div#2').append(letterArray[2]);
+	$('div#3').append(letterArray[3]);
+	$('div#4').append(letterArray[4]);
+	$('div#5').append(letterArray[5]);
+	$('div#6').append(letterArray[6]);
+	$('div#7').append(letterArray[7]);
+	$('div#8').append(letterArray[8]);
+	$('div#9').append(letterArray[9]);
+	$('div#10').append(letterArray[10]);
+	$('div#11').append(letterArray[11]);
+	$('div#12').append(letterArray[12]);
+	$('div#13').append(letterArray[13]);
+	$('div#14').append(letterArray[14]);
+	$('div#15').append(letterArray[15]);
 }
 
 
+// COUNTDOWN TIMER
 var mins = 3;
 var secs = mins * 60;
 var currentSeconds = 0;
@@ -122,19 +113,20 @@ var decreaseTime = function () {
   currentSeconds = secs % 60;
    if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
    	 secs--;
-   	 $('div.timer').attr('id', 'timer-border');
+   	$('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
-   if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
-   	alert("TIME'S UP! Game over. Refresh to play again.");
-   		$('div.die').removeClass('playable');
-	   	$('div.die').addClass('not-playable');
-	   	var reset = $('<p>').addClass('refresh').text('REFRESH TO PLAY AGAIN :)');
-	   	$('div.position').prepend(reset);
-   } 
+   		if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
+   			alert("TIME'S UP! Game over. Refresh to play again.");
+   			$('div.die').removeClass('playable');
+	   		$('div.die').addClass('not-playable');
+	   		var reset = $('<p>').addClass('refresh').text('REFRESH TO PLAY AGAIN :)');
+	   		$('div.position').prepend(reset);
+   }
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
 
 
+//allows users to BUILD words to guess
 var buildAWord = function(event) {
  	die = event;
  	console.log("Current Letter: " + die.text());
@@ -155,6 +147,7 @@ var buildAWord = function(event) {
  		}
  };
 
+// UNDO the building of a current
 var undoWord = function() {
 			currentString = "";
 	   	currentDieIndex = null;
@@ -163,9 +156,9 @@ var undoWord = function() {
 	   	$('div.die').addClass('playable');
 }
 
-//checks for touching dice
+
+//permits only legal game moves
 var checkAdjacent = function() {
-	 // debugger
 	 if (currentDieIndex === null ) {
 	 		return true;
 	 }
@@ -321,11 +314,10 @@ var checkAdjacent = function() {
 	 else {
 			 		 return false;
 			 }
-
 }
 
 
-//verifies a word is in dictionary & adds points to score for valid words
+//verifies word in dictionary & adds points to score for verified words
 var verifyWord = function() {
 	var word = currentString;
 		for (d=0; d < boggleDictionary.length; d++) {	
@@ -351,6 +343,8 @@ var verifyWord = function() {
  		}	
 	}
 
+
+//SUBMIT a word - accepts and updates screen score IF word is verified
 function submitWord(){
 	if (mousedown == 1){
 		// if the word is long enough, add it to the word list
@@ -368,12 +362,6 @@ function submitWord(){
 
 
 
-
-
-
-
-
-
 // GAME HISTORY FUNCTIONS
 var renderGames = function(games) {
   games.forEach(function(game) {
@@ -382,52 +370,3 @@ var renderGames = function(games) {
     scores.appendTo($('.game-history'));
   });
 };
-
-// var newScore = $('p.score').val();
-// //   var gameData = {
-// //     note: {
-// //     	user_id: game.user_id,
-// //       total_score: newScore
-// //     }
-// //   };
-
-// var renderUsers = function(users) {
-//   users.forEach(function(user) {
-//     var id = user.id;
-//   });
-// };
-
-// // var loadGame = function(noteId) {
-// //   // This ajax request will only receive a successful response if I am logged in
-// //   // and I am the correct user, etc. If successful, the note I just received will
-// //   // be rendered on the page.
-// //   $.get('/games/' + gameId).done(renderGames);
-// // };
-
-
-// $.get('/users/' + userId).done(renderUsers);
-
-// // var createGame = function() {
-// // // Assemble data
-// //   var newScore = $('p.score').val();
-// //   var gameData = {
-// //     note: {
-// //     	user_id: current_user.id,
-//       total_score: newScore
-//     }
-//   };
-
-// // Send the post request to create a new note
-//   $.post('/games', gameData)
-//   .done(function() {
-//   	score.val('')
-//   })
-// }
-
-// $.ajax({
-// 	url: '/games/' +
-// })
-
-
-
-
