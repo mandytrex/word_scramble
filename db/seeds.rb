@@ -8,6 +8,7 @@
 
 
 User.destroy_all
+Game.destroy_all
 
 mandy = User.create({
 	username: "mandytrex",
@@ -28,12 +29,26 @@ Game.create({
 	})
 
 Game.create({
-	total_score: 900,
+	total_score: 100,
 	user_id: mandy.id
 	})
 
+Game.create({
+	total_score: 52,
+	user_id: mandy.id
+	})
 
 Game.create({
 	total_score: 35,
+	user_id: joe.id
+	})
+
+Game.create({
+	total_score: 2,
+	user_id: joe.id
+	})
+
+Game.create({
+	total_score: 88,
 	user_id: joe.id
 	})

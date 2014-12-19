@@ -390,29 +390,50 @@ var renderGames = function(games) {
   });
 };
 
+// var newScore = $('p.score').val();
+// //   var gameData = {
+// //     note: {
+// //     	user_id: game.user_id,
+// //       total_score: newScore
+// //     }
+// //   };
 
-// var loadGame = function(noteId) {
-//   // This ajax request will only receive a successful response if I am logged in
-//   // and I am the correct user, etc. If successful, the note I just received will
-//   // be rendered on the page.
-//   $.get('/games/' + gameId).done(renderGames);
+// var renderUsers = function(users) {
+//   users.forEach(function(user) {
+//     var id = user.id;
+//   });
 // };
 
+// // var loadGame = function(noteId) {
+// //   // This ajax request will only receive a successful response if I am logged in
+// //   // and I am the correct user, etc. If successful, the note I just received will
+// //   // be rendered on the page.
+// //   $.get('/games/' + gameId).done(renderGames);
+// // };
 
-// Assemble data
-  // var newScore = $('p.score').val();
-  // var gameData = {
-  //   note: {
-  //     score: newScore
-  //   }
-  // };
+
+// $.get('/users/' + userId).done(renderUsers);
+
+// // var createGame = function() {
+// // // Assemble data
+// //   var newScore = $('p.score').val();
+// //   var gameData = {
+// //     note: {
+// //     	user_id: current_user.id,
+//       total_score: newScore
+//     }
+//   };
 
 // // Send the post request to create a new note
-//   $.post('/games', gameData).done(function(game) {
-//   });
+//   $.post('/games', gameData)
+//   .done(function() {
+//   	score.val('')
+//   })
 // }
 
-
+// $.ajax({
+// 	url: '/games/' +
+// })
 
 
 
