@@ -126,6 +126,8 @@ var decreaseTime = function () {
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
    	alert("TIME'S UP! Game over. Refresh to play again.");
+   		$('div.die').removeClass('playable');
+	   	$('div.die').addClass('not-playable');
    } 
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }

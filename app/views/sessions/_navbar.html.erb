@@ -1,7 +1,8 @@
 <!-- CLASS NAV RIGHT  -->
 <% if navbar.include? (:welcome) %>
 		Welcome, <%= current_user.username.capitalize %>!<br>
-				<%= link_to "Profile", user_path(current_user) %> | <%= link_to "Log Out", sessions_path, method: :delete %> | <%= link_to "Let's Play!", root_path %>
+		<div>		<%= link_to "Profile", user_path(current_user) %> | <%= link_to "Log Out", sessions_path, method: :delete %>
+			</div>
 <% end %>
 
 <% if navbar.include? (:sign_up) %>
