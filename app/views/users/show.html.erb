@@ -4,4 +4,8 @@
 <p> User: <%= @user.username %> </p>
 <% end %>
 
-<div id="user-view"></div>
+<script>
+$(function() {
+		$.get('/games').done(renderGames);
+	})
+</script>

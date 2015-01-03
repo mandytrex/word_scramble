@@ -1,10 +1,18 @@
 <div class="position">
 <div id="hidden-game-div">
 </div>
-<br>
-<!-- <button class="start">Start Game</button> -->
+<div id="dialog" class="start" title="Are you ready to play?" style="display:none">You have 3 minutes! <br><br> Make as many words as you can before time runs out.</div>
+
 <input type="submit" class="start" value="Start Game!" title="start" />
-<br><br>
+<br>
+
+
+<span style="inline">
+<input type="submit" class="submit-word" value="Submit Word!" title="submit-word" />
+<input type="submit" class="undo" value="Undo!" title="undo" />
+<br>
+</span>
+<br>
 <div class="game-instructions">
 	<p class="instruction-title">How to play:</p>
 	<p class="game-instructions">
@@ -42,11 +50,7 @@
 <p class="word-build"></p>
 </div>
 
-<input type="submit" class="submit-word" value="Submit Word!" title="submit-word" /><br>
-<input type="submit" class="undo" value="Undo!" title="undo" />
-<!-- <button class="submit-word">Submit Word</button>
-<button class="undo">Undo</button> -->
-<br><br>
+
 <div class="word-list">
 	<p class="word">Accepted Words:</p>
 </div>
@@ -60,3 +64,4 @@
 
 <div class="boggle-board">
 </div>
+

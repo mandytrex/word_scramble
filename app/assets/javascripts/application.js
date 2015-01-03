@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
 //= scrambleClasses/game.js
@@ -19,15 +20,28 @@
 //= scrambleClasses/board.js
 
 // on load, click, mouse down functions
-if ($('#hidden-game-div')) {
+
+	if ($('#hidden-game-div')) {
 	$(function() {
 	  startGame();
+	  console.log('i am working');
 	  $('.start').on('click', function() {
 	  	$('.start').hide();
-			makeGame();
-	  	fillBoard();
-	  	alert("You have 3 MINUTES to play!");
-	  	setTimeout('decreaseTime()',1000);
+	  	$('#dialog').dialog({
+	  		modal: true,
+	  		draggable: false,
+	  		resizeble: false,
+	  		buttons: {
+	  			"I'm ready to play!": function() {
+	  				$(this).dialog('close');
+	  				}
+	  			}
+	  		});
+	  	$('#dialog').on('dialogclose', function() {
+	  		setTimeout('decreaseTime()',1000);
+	  		makeGame();
+	  		fillBoard();
+	  	})
 	  });
 	  $( ".boggle-board" ).on("mousedown", ".die", function() {
 	   	buildAWord($(this));
@@ -42,15 +56,19 @@ if ($('#hidden-game-div')) {
 	   });
 		$('.undo').on('click', undoWord);
 		$.get('/games').done(renderGames);
-	})
-}
+		})
+	}
+
+	$(document).on("click", ".refresh", function(){
+    location.reload(true);
+		});
 
 
-if ($('#user-view')) {
-	// $(function() {
-		$.get('/games').done(renderGames);
-	// })
-}
+// if ($('.game-history')) {
+// 	$(function() {
+// 		$.get('/games').done(renderGames);
+// 	})
+// }
 
 //HELPER VARIABLES
 
@@ -90,6 +108,7 @@ var makeGame = function() {
 //inserts dice from the array into  proper div on document
 var fillBoard = function() {
 	var letterArray = game.board.tiles;
+	$('div.die').effect('shake');
 	$('div#0').append(letterArray[0]);
 	$('div#1').append(letterArray[1]);
 	$('div#2').append(letterArray[2]);
@@ -123,16 +142,15 @@ var decreaseTime = function () {
    	$('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    		if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
-   			alert("TIME'S UP! Game over. Refresh to play again.");
+   			alert("TIME'S UP! Game over.");
    			createGameHistory();
    			$('div.die').removeClass('playable');
 	   		$('div.die').addClass('not-playable');
-	   		var reset = $('<p>').addClass('refresh').text('REFRESH TO PLAY AGAIN :)');
+	   		var reset = $("<input type='submit' value='New Game!' title='refresh'/>").addClass('refresh');
 	   		$('div.position').prepend(reset);
    }
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
-
 
 //allows users to BUILD words to guess
 var buildAWord = function(event) {

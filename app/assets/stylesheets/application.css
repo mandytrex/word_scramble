@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ /*
+ *= require jquery-ui
+ */
+
 /*-------------- GOOGLE FONTS --------------*/
 
 @import url('//fonts.googleapis.com/css?family=Orbitron:400,700');
@@ -31,7 +35,10 @@ p.refresh {
   line-height: 5px;
 }
 
+
 /*NAVBAR & GENERAL STYLING*/
+
+
 a {
   color: midnightblue;
   font-family: helvetica;
@@ -75,7 +82,10 @@ a#navbar {
 
 /*-----------------------------------------------------------*/
 
+
+
 /*HIDDEN DIV*/
+
 div.hidden-game-div {
   height: 0px;
   width: 0px;
@@ -122,6 +132,7 @@ div.form {
 }
 
 /*shows what fields have errors in a form, if the form page doesn't save and is rerendered*/
+
 .field_with_errors input {
     border: 2px solid red;
 }
@@ -147,8 +158,9 @@ div.form {
 
 /*-----------------------------------------------------------*/
 /*TIMER STYLE*/
+
 div.timer {
-  width: 180px;
+  width: 190px;
   height: 28px;
   text-align: center;
   font-family: 'Orbitron', 'Courier New', monospace;
@@ -172,6 +184,7 @@ p.timer{
 
 /*-----------------------------------------------------------*/
 /*SCORE BOARD STYLE*/
+
 div.score {
   border: 2px solid midnightblue;
   width: 190px;
@@ -196,8 +209,11 @@ p.score{
 
 /*-----------------------------------------------------------*/
 /*BUTTON STYLING*/
+
 input.start {
+  margin-top: 20px;
   margin-left: 20px;
+  margin-bottom: 10px;
   width: 180px;
   height: 40px;
   background-color: gold;
@@ -207,7 +223,7 @@ input.start {
 
 input.submit-word {
   margin-left: 20px;
-  width: 180px;
+  width: 93px;
   height: 30px;
   background-color: gold;
   border-radius: 10px;
@@ -215,23 +231,32 @@ input.submit-word {
 }
 
 input.undo {
-  margin-left: 20px;
-  width: 180px;
+  margin-left: 5px;
+  width: 93px;
   height: 30px;
   background-color: gold;
   border-radius: 10px;
   font-weight: bold;
   margin-top: 7px;
 }
-/*button.submit-word {
-  margin-left: 20px;
 
-}*/
+input.refresh {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 0;
+  width: 180px;
+  height: 40px;
+  background-color: gold;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
 
 
 
 /*-----------------------------------------------------------*/
 /*WORD BUILD STYLE*/
+
 div.word-build {
   font-family: 'Courier New';
   border: 2px solid midnightblue;
@@ -254,10 +279,11 @@ p.word-build{
 
 /*-----------------------------------------------------------*/
 /*ACCEPTED WORD LIST STYLE */
+
 div.word-list {
   font-family: 'Courier New';
   color: midnightblue;
-  width: 180px;
+  width: 190px;
   height: 165px;
   border: 2px solid midnightblue;
   margin-left: 20px;
@@ -283,6 +309,7 @@ p.verified-word {
 
 /*-----------------------------------------------------------*/
 /*GAME HISTORY STYLING*/
+
 div.game-history {
   float: right;
   color: midnightblue;
@@ -314,31 +341,34 @@ p.game-history {
 /*BOGGLE BOARD STYLING*/
 
 div.boggle-board {
-  width: 690px;
+  width: 300px;
   margin-right: auto;
   margin-left: 120px;
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 150px;
-  display: inline-block;
+  /*display: inline;*/
   float: left;
 }
 
+
 /*POSITIONS ALL DIVS ON THE LEFT OF BOARD*/
+
+
 div.position {
   float: left;
-  margin-left: 15px;
+  width: 230px;
 }
 
 div.row {
-  width: 680px;
-  height: 150px;
+  width: 550px;
+  height: 50px;
   margin: 0 auto;
   clear: both;
 }
 
 div.not-playable {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 5px;
   border-radius: 5px;
   background: gold;
@@ -347,15 +377,16 @@ div.not-playable {
   font-family: monospace;
 
   text-align: center;
-  line-height: 160px;
+  line-height: 115px;
   color: midnightblue;
-  font-size: 100px;
+  font-size: 70px;
+  font-weight: bold;
 }
 
 
 div.playable {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 5px;
   border-radius: 5px;
   background: royalblue;
@@ -364,7 +395,8 @@ div.playable {
   font-family: monospace;
 
   text-align: center;
-  line-height: 140px;
+  line-height: 115px;
   color: midnightblue;
-  font-size: 100px;
-}
+  font-size: 70px;
+  font-weight: bold;
+} 
