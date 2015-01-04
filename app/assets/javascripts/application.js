@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require sweet-alert
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -27,21 +28,14 @@
 	  console.log('i am working');
 	  $('.start').on('click', function() {
 	  	$('.start').hide();
-	  	$('#dialog').dialog({
-	  		modal: true,
-	  		draggable: false,
-	  		resizeble: false,
-	  		buttons: {
-	  			"I'm ready to play!": function() {
-	  				$(this).dialog('close');
-	  				}
-	  			}
-	  		});
-	  	$('#dialog').on('dialogclose', function() {
-	  		setTimeout('decreaseTime()',1000);
-	  		makeGame();
-	  		fillBoard();
-	  	})
+	  	makeGame();
+	  	fillBoard();
+	  	beginGameAlert();
+	  	$('.begin').on('click', function() {
+	  	setTimeout('decreaseTime()',1000);
+	  	$('button.confirm').removeClass('begin');
+	  	$('button.confirm').addClass('over');
+	 	 })
 	  });
 	  $( ".boggle-board" ).on("mousedown", ".die", function() {
 	   	buildAWord($(this));
@@ -141,8 +135,9 @@ var decreaseTime = function () {
    	 secs--;
    	$('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
-   		if ((Number(currentSeconds) === 0) && (currentMinutes === 0)) {
-   			alert("TIME'S UP! Game over.");
+   		if ((Number(currentSeconds) === 0) && (currentMinutes === 0) && ($('button').hasClass('over'))) {
+   			swal("TIME'S UP! Game over.", "error");
+   			$('div.timer').empty();
    			createGameHistory();
    			$('div.die').removeClass('playable');
 	   		$('div.die').addClass('not-playable');
@@ -151,6 +146,7 @@ var decreaseTime = function () {
    }
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
+
 
 //allows users to BUILD words to guess
 var buildAWord = function(event) {
@@ -397,7 +393,6 @@ var renderGames = function(games) {
 
 
 var createGameHistory = function() {
-
 	var currentGameScore = Number($('p.score').text());
 	var gameData = {
 		game: {
@@ -416,6 +411,8 @@ var createGameHistory = function() {
   });
 }
 
-
-
+var beginGameAlert = function() {
+	swal("You have 3 minutes!", "Make as many words as you can before time runs out!", "success");
+	$('button.confirm').addClass('begin');
+}
 

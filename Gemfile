@@ -42,6 +42,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-ui-rails'
 
+gem 'sweetalert-rails'
+
 # gem 'devise'
 
 # Use unicorn as the app server

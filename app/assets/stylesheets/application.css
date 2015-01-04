@@ -18,6 +18,11 @@
  *= require jquery-ui
  */
 
+/*
+ *= require sweet-alert
+ */
+
+
 /*-------------- GOOGLE FONTS --------------*/
 
 @import url('//fonts.googleapis.com/css?family=Orbitron:400,700');
@@ -93,7 +98,7 @@ div.hidden-game-div {
 }
 
 div.game-instructions {
-  border: 2px solid midnightblue;
+  border: 1px solid midnightblue;
   height: 213px;
   width: 190px;
   margin-left: 20px;
@@ -170,7 +175,7 @@ div.timer {
 }
 
 div#timer-border {
-  border: 2px solid midnightblue;
+  border: 2px;
 }
 
 p.timer{
@@ -179,6 +184,7 @@ p.timer{
   font-family: 'Orbitron', 'Courier New', monospace;
   font-weight: bold;
   font-size: 18px;
+  padding-top: 6px;
 }
 
 
@@ -186,23 +192,24 @@ p.timer{
 /*SCORE BOARD STYLE*/
 
 div.score {
-  border: 2px solid midnightblue;
+  border: 1px solid midnightblue;
   width: 190px;
   height: 30px;
   text-align: center;
   font-weight: bold;
-  font-family: 'Orbitron', 'Courier New', monospace;
+  font-family: 'Courier New';
   margin-left: 20px;
   margin-bottom: 10px;
   color: midnightblue;
+  padding-bottom: 8px;
 }
 
 p.score{
   margin: 5px;
   color: midnightblue;
-  font-family: 'Orbitron', 'Courier New', monospace;
+  font-family: 'Courier New';
   font-weight: bold;
-  line-height: 5px;
+  line-height: 15px;
 }
 
 
@@ -214,11 +221,12 @@ input.start {
   margin-top: 20px;
   margin-left: 20px;
   margin-bottom: 10px;
-  width: 180px;
+  width: 192px;
   height: 40px;
   background-color: gold;
   border-radius: 10px;
   font-weight: bold;
+  color: midnightblue;
 }
 
 input.submit-word {
@@ -228,6 +236,7 @@ input.submit-word {
   background-color: gold;
   border-radius: 10px;
   font-weight: bold;
+  color: midnightblue;
 }
 
 input.undo {
@@ -238,6 +247,7 @@ input.undo {
   border-radius: 10px;
   font-weight: bold;
   margin-top: 7px;
+  color: midnightblue;
 }
 
 input.refresh {
@@ -249,9 +259,8 @@ input.refresh {
   background-color: gold;
   border-radius: 10px;
   font-weight: bold;
+  color: midnightblue;
 }
-
-
 
 
 /*-----------------------------------------------------------*/
@@ -259,7 +268,7 @@ input.refresh {
 
 div.word-build {
   font-family: 'Courier New';
-  border: 2px solid midnightblue;
+  border: 1px solid midnightblue;
   width: 190px;
   height: 50px;
   text-align: center;
@@ -285,7 +294,7 @@ div.word-list {
   color: midnightblue;
   width: 190px;
   height: 165px;
-  border: 2px solid midnightblue;
+  border: 1px solid midnightblue;
   margin-left: 20px;
   float: left;
   padding-top: 2px;
@@ -315,7 +324,7 @@ div.game-history {
   color: midnightblue;
   width: 150px;
   height: 200px;
-  border: 2px solid midnightblue;
+  border: 1px solid midnightblue;
   margin-left: 20px;
   padding-left: 5px;
   margin-right: 100px;
@@ -344,7 +353,7 @@ div.boggle-board {
   width: 300px;
   margin-right: auto;
   margin-left: 120px;
-  margin-top: 25px;
+  margin-top: 65px;
   margin-bottom: 150px;
   /*display: inline;*/
   float: left;
