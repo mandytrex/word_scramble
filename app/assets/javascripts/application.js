@@ -136,7 +136,7 @@ var decreaseTime = function () {
    	$('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    		if ((Number(currentSeconds) === 0) && (currentMinutes === 0) && ($('button').hasClass('over'))) {
-   			swal("TIME'S UP! Game over.", "error");
+   			swal("TIME'S UP!", "Game over!", "error");
    			$('div.timer').empty();
    			createGameHistory();
    			$('div.die').removeClass('playable');
