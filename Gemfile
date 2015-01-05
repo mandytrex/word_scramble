@@ -44,6 +44,10 @@ gem 'jquery-ui-rails'
 
 gem 'sweetalert-rails'
 
+group :development, :test do
+  gem 'jasmine'
+end
+
 # gem 'devise'
 
 # Use unicorn as the app server

@@ -30,9 +30,6 @@ var allDice = [
 	this.dice = diceArray;
 };
 
-Die.prototype.playable = function() {
-}
-
 Die.prototype.render = function() {
 	return this.dice.value;
 };

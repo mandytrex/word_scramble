@@ -5,7 +5,7 @@ var game = {
 	},
 	start: function() {
 		this.makeBoard();
-		this.board.startGame();
+		this.board.createBoard();
 		// this.render();
 	}
 };

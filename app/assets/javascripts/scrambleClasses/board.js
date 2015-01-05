@@ -2,7 +2,7 @@ function Board() {
 	this.tiles = [];
 }
 
-Board.prototype.startGame = function() {
+Board.prototype.createBoard = function() {
 			newBoard = new Die();
 			newBoard.setState();
 			for (i=0; i < 16; i++) {
