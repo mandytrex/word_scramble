@@ -351,9 +351,9 @@ p.game-history {
 
 div.boggle-board {
   width: 300px;
-  margin-right: auto;
+  /*margin-right: auto;*/
   margin-left: 120px;
-  margin-top: 65px;
+  margin-top: 70px;
   margin-bottom: 150px;
   /*display: inline;*/
   float: left;
@@ -377,18 +377,18 @@ div.row {
 
 div.not-playable {
   width: 120px;
-  height: 120px;
-  margin: 5px;
+  height: 100px;
+  margin: 2px;
   border-radius: 5px;
   background: gold;
-  border: 3px solid royalblue;
+  border: 5px solid midnightblue;
   float: left;
   font-family: monospace;
 
   text-align: center;
   line-height: 115px;
   color: midnightblue;
-  font-size: 70px;
+  font-size: 90px;
   font-weight: bold;
 }
 
@@ -396,16 +396,16 @@ div.not-playable {
 div.playable {
   width: 120px;
   height: 120px;
-  margin: 5px;
+  margin: 1px;
   border-radius: 5px;
   background: royalblue;
-  border: 3px solid royalblue;
+  border: 5px solid midnightblue;
   float: left;
   font-family: monospace;
 
   text-align: center;
   line-height: 115px;
   color: midnightblue;
-  font-size: 70px;
+  font-size: 90px;
   font-weight: bold;
 } 

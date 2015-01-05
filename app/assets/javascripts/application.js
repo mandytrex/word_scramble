@@ -20,21 +20,19 @@
 //= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
-// on load, click, mouse down functions
-
-	if ($('#hidden-game-div')) {
-	$(function() {
-	  startGame();
-	  console.log('i am working');
-	  $('.start').on('click', function() {
-	  	$('.start').hide();
-	  	makeGame();
-	  	fillBoard();
-	  	beginGameAlert();
-	  	$('.begin').on('click', function() {
-	  	setTimeout('decreaseTime()',1000);
-	  	$('button.confirm').removeClass('begin');
-	  	$('button.confirm').addClass('over');
+if ($('#hidden-game-div')) {
+$(function() {
+  startGame();
+  console.log('i am working');
+  $('.start').on('click', function() {
+  	$('.start').hide();
+  	makeGame();
+  	fillBoard();
+	 	beginGameAlert();
+	  $('.begin').on('click', function() {
+	  setTimeout('decreaseTime()',1000);
+	  $('button.confirm').removeClass('begin');
+	  $('button.confirm').addClass('over');
 	 	 })
 	  });
 	  $( ".boggle-board" ).on("mousedown", ".die", function() {
@@ -57,17 +55,9 @@
     location.reload(true);
 		});
 
-
-// if ($('.game-history')) {
-// 	$(function() {
-// 		$.get('/games').done(renderGames);
-// 	})
-// }
-
 //HELPER VARIABLES
-
 //array of guessed words (valid & invalid)
-var guessedWords = [];
+guessedWords = [];
 //current word being built
 var currentString = "";
 //score
@@ -79,13 +69,10 @@ var die;
 //index of last clicked die
 var currentDieIndex = null;
 
-
-
 //START game by generating array of 16 dice
 var startGame = function() {
   game.start();
 }
-
 
 // makes the board element on html page
 var makeGame = function() {
@@ -121,7 +108,6 @@ var fillBoard = function() {
 	$('div#15').append(letterArray[15]);
 }
 
-
 // COUNTDOWN TIMER
 var mins = 1;
 var secs = mins * 60;
@@ -136,7 +122,8 @@ var decreaseTime = function () {
    	$('div.timer').attr('id', 'timer-border');
     $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
    		if ((Number(currentSeconds) === 0) && (currentMinutes === 0) && ($('button').hasClass('over'))) {
-   			swal("TIME'S UP!", "Game over!", "error");
+   			var winningScore = $('p.score').text();
+   			swal("TIME'S UP!", "Game over! Final score: " + winningScore, "error");
    			$('div.timer').empty();
    			createGameHistory();
    			$('div.die').removeClass('playable');
@@ -146,7 +133,6 @@ var decreaseTime = function () {
    }
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
-
 
 //allows users to BUILD words to guess
 var buildAWord = function(event) {
@@ -177,7 +163,6 @@ var undoWord = function() {
 	   	$('div.die').removeClass('not-playable');
 	   	$('div.die').addClass('playable');
 }
-
 
 //permits only legal game moves
 var checkAdjacent = function() {
@@ -332,18 +317,16 @@ var checkAdjacent = function() {
 	 		|| Number(die.attr('id')) === 10 ))	{
 			 		 return true;
 			 }
-
 	 else {
 			 		 return false;
 			 }
 }
 
-
 //verifies word in dictionary & adds points to score for verified words
 var verifyWord = function() {
-	var word = currentString;
+	var word = currentString.toLowerCase();
 		for (d=0; d < boggleDictionary.length; d++) {	
-			if (word.toLowerCase() === boggleDictionary[d]) {
+			if ( (word) === (boggleDictionary[d]) ) {
 				if (word.length <= 3) {
 					score += 2;	
 				}
@@ -353,18 +336,14 @@ var verifyWord = function() {
 				if (word.length === 5) {
 					score += 6;
 				}
-				if (word.length === 6) {
+				if (word.length >= 6) {
 					score += 8;
-				}
-				if (word.length >= 7) {
-					score += 10;
 				}
 				var listItem = $('<p>').addClass('verified-word').text(currentString);
 				$('.word-list').append(listItem);
 			}
  		}	
 	}
-
 
 //SUBMIT a word - accepts and updates screen score IF word is verified
 function submitWord(){
@@ -381,7 +360,6 @@ function submitWord(){
 	}
 }
 
-
 // GAME HISTORY FUNCTIONS
 var renderGames = function(games) {
   games.forEach(function(game) {
@@ -390,7 +368,6 @@ var renderGames = function(games) {
     scores.appendTo($('.game-history'));
   });
 };
-
 
 var createGameHistory = function() {
 	var currentGameScore = Number($('p.score').text());
@@ -415,4 +392,3 @@ var beginGameAlert = function() {
 	swal("You have 3 minutes!", "Make as many words as you can before time runs out!", "success");
 	$('button.confirm').addClass('begin');
 }
-
