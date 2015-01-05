@@ -74,7 +74,7 @@ var startGame = function() {
   game.start();
 }
 
-// makes the board element on html page
+// adds the board to html page
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
     var rowDiv = $('<div>').addClass('row').appendTo($('body'))
@@ -134,6 +134,14 @@ var decreaseTime = function () {
    if(secs !== -1) setTimeout('decreaseTime()', 1000);
  }
 
+
+//alert at the start of game
+var beginGameAlert = function() {
+	swal("You have 3 minutes!", "Make as many words as you can before time runs out!", "success");
+	$('button.confirm').addClass('begin');
+}
+
+
 //allows users to BUILD words to guess
 var buildAWord = function(event) {
  	die = event;
@@ -141,7 +149,6 @@ var buildAWord = function(event) {
  	//index(ID) of current die
 
  	if (die.hasClass('playable') && checkAdjacent() == true) {
- 		// var dieLetter = $('<p>').text(die.text());
  		$('p.word-build').append(die.text());
  		die.removeClass('playable');
  		die.addClass('not-playable');
@@ -163,6 +170,7 @@ var undoWord = function() {
 	   	$('div.die').removeClass('not-playable');
 	   	$('div.die').addClass('playable');
 }
+
 
 //permits only legal game moves
 var checkAdjacent = function() {
@@ -386,9 +394,4 @@ var createGameHistory = function() {
     // Render the new score in game history view area
     renderGames(game);
   });
-}
-
-var beginGameAlert = function() {
-	swal("You have 3 minutes!", "Make as many words as you can before time runs out!", "success");
-	$('button.confirm').addClass('begin');
 }
