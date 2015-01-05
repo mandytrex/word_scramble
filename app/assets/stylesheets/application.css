@@ -59,6 +59,7 @@ h1.header {
   color: midnightblue;
   margin-left: 20px;
   line-height: 15px;
+  font-size: 35px;
 }
 
 h1 {
@@ -99,7 +100,7 @@ div.hidden-game-div {
 
 div.game-instructions {
   border: 1px solid midnightblue;
-  height: 213px;
+  height: 200px;
   width: 190px;
   margin-left: 20px;
   padding-top: 3px;
@@ -110,6 +111,7 @@ p.game-instructions {
   margin-left: 10px;
   line-height: 20px;
   font-size: 14px;
+  margin-top: 3px;
 }
 
 ul.game-instructions {
@@ -125,7 +127,7 @@ p.instruction-title {
   font-weight: bold;
   text-align: center;
   color: midnightblue;
-  font-family: 'Courier New';
+  font-family: 'Orbitron';
 }
 
 
@@ -194,14 +196,15 @@ p.timer{
 div.score {
   border: 1px solid midnightblue;
   width: 190px;
-  height: 30px;
+  height: 28px;
   text-align: center;
   font-weight: bold;
-  font-family: 'Courier New';
+  font-family: 'Orbitron';
   margin-left: 20px;
   margin-bottom: 10px;
   color: midnightblue;
   padding-bottom: 15px;
+  padding-top: 3px;
 }
 
 p.score{
@@ -281,7 +284,7 @@ p.word-build{
   margin: 5px;
   color: midnightblue;
   line-height: 6px;
-  font-size: 16px;
+  font-size: 19px;
 }
 
 
@@ -308,6 +311,7 @@ p.word {
   font-weight: bold;
   text-align: center;
   color: midnightblue;
+  font-family: 'Orbitron';
 }
 
 p.verified-word {
@@ -352,7 +356,7 @@ p.game-history {
 div.boggle-board {
   width: 300px;
   /*margin-right: auto;*/
-  margin-left: 120px;
+  margin-left: 100px;
   margin-top: 70px;
   margin-bottom: 150px;
   /*display: inline;*/
@@ -377,8 +381,8 @@ div.row {
 
 div.not-playable {
   width: 120px;
-  height: 100px;
-  margin: 2px;
+  height: 120px;
+  margin: 1px;
   border-radius: 5px;
   background: gold;
   border: 5px solid midnightblue;

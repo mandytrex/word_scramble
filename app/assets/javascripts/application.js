@@ -109,7 +109,7 @@ var fillBoard = function() {
 }
 
 // COUNTDOWN TIMER
-var mins = 1;
+var mins = 3;
 var secs = mins * 60;
 var currentSeconds = 0;
 var currentMinutes = 0;
