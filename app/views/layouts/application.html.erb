@@ -2,22 +2,18 @@
 <html>
 <head>
   <title>WordScrambleApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	
 	<header>
-		<h1 class="header">Word Scramble</h1>
-		<a id="navbar">
 			<% if session[:current_user_id] %>
 				<%= render partial: 'sessions/navbar', locals: { navbar: [:welcome, :profile, :game, :log_out] } %>
 			<% else %>
 				<%= render partial: 'sessions/navbar', locals: { navbar: [:log_in, :sign_up, :game_guest] } %>
 			<% end %>
-	
-		</a>
 </header>
 
 <% if session[:current_user_id] %>

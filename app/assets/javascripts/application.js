@@ -13,8 +13,8 @@
 //= require sweet-alert
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-ui
-//= require turbolinks
 //= require_tree .
 //= scrambleClasses/game.js
 //= scrambleClasses/die.js
@@ -22,23 +22,30 @@
 
 if ($('#hidden-game-div')) {
 $(function() {
-  startGame();
   console.log('i am working');
   $('.start').on('click', function() {
-  	$('.start').hide();
-  	makeGame();
-  	fillBoard();
-	 	beginGameAlert();
-	  $('.begin').on('click', function() {
-	  setTimeout('decreaseTime()',1000);
-	  $('button.confirm').removeClass('begin');
-	  $('button.confirm').addClass('over');
-	 	 })
+  	$('.start').remove();
+	 	$('#instruction-modal').fadeIn(300);
+	  $('span.close-instruction-modal').on('click', function() {
+	  	$('#instruction-modal').fadeOut(150);
+	  	startGame();
+	  	threeMinuteTimer();
+	 	 });
 	  });
-	  $( ".boggle-board" ).on("mousedown", ".die", function() {
+  	$('span.close-game-modal').on('click', function() {
+	  	$('#game-over-modal').fadeOut(150);
+	  	emptyGame();
+	 	 });
+  	$('.new-game').on('click', function() {
+  		$('#game-over-modal').fadeOut(150);
+	  	emptyGame();
+	  	startGame();
+	  	threeMinuteTimer();
+	  });
+	  $('.boggle-board').on('mousedown', '.die', function() {
 	   	buildAWord($(this));
 	   });
-	  $( "body" ).on("click", ".submit-word", function() {
+	  $('body').on('click', '.submit-word', function() {
 	   	submitWord();
 	   	currentString = "";
 	   	currentDieIndex = null;
@@ -50,10 +57,6 @@ $(function() {
 		$.get('/games').done(renderGames);
 		})
 	}
-
-	$(document).on("click", ".refresh", function(){
-    location.reload(true);
-		});
 
 //HELPER VARIABLES
 //array of guessed words (valid & invalid)
@@ -72,12 +75,22 @@ var currentDieIndex = null;
 //START game by generating array of 16 dice
 var startGame = function() {
   game.start();
+  makeGame();
+  fillBoard();
+}
+
+var emptyGame = function() {
+	$('.boggle-board').empty();
+	$('p.timer').text("");
+	$('p.game-score').text('0');
+	$('p.word-build').empty();
+	$('p.accepted-words').empty();
 }
 
 // adds the board to html page
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
-    var rowDiv = $('<div>').addClass('row').appendTo($('body'))
+    var rowDiv = $('<div>').addClass('row-die').appendTo($('body'))
     for(var col = 0; col < 4; col++) {
       var column = $('<div>').addClass('die').addClass('playable').attr('id', row * 4 + col)
       column.appendTo(rowDiv);
@@ -108,37 +121,27 @@ var fillBoard = function() {
 	$('div#15').append(letterArray[15]);
 }
 
-// COUNTDOWN TIMER
-var mins = 3;
-var secs = mins * 60;
-var currentSeconds = 0;
-var currentMinutes = 0;
- 
-var decreaseTime = function () {
-  currentMinutes = Math.floor(secs / 60);
-  currentSeconds = secs % 60;
-   if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
-   	 secs--;
-   	$('div.timer').attr('id', 'timer-border');
-    $("p.timer").text("Time Left: " + currentMinutes + ":" + currentSeconds);
-   		if ((Number(currentSeconds) === 0) && (currentMinutes === 0) && ($('button').hasClass('over'))) {
-   			var winningScore = $('p.score').text();
-   			swal("TIME'S UP!", "Game over! Final score: " + winningScore, "error");
-   			$('div.timer').empty();
-   			createGameHistory();
-   			$('div.die').removeClass('playable');
-	   		$('div.die').addClass('not-playable');
-	   		var reset = $("<input type='submit' value='New Game!' title='refresh'/>").addClass('refresh');
-	   		$('div.position').prepend(reset);
-   }
-   if(secs !== -1) setTimeout('decreaseTime()', 1000);
- }
 
+// TIMER FUNCTION
+var threeMinutes = 60 * 1,
+mins, seconds;
 
-//alert at the start of game
-var beginGameAlert = function() {
-	swal("You have 3 minutes!", "Make as many words as you can before time runs out!", "success");
-	$('button.confirm').addClass('begin');
+var threeMinuteTimer = function() {
+	timer = setInterval(function() {
+  mins = parseInt(threeMinutes / 60)
+  seconds = parseInt(threeMinutes % 60);
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+  $('p.timer').text("Time Left: " + mins + ":" + seconds);
+  threeMinutes --;
+
+  if (threeMinutes < 0) {
+  	clearTimeout(timer);
+  	threeMinutes = 60 * 1;
+  	var winningScore = $('p.game-score').text();
+  	$('h4.final-score').text("Final Score: " + winningScore);
+  	$('#game-over-modal').fadeIn(150);
+   	 }
+ }, 1000);
 }
 
 
@@ -172,7 +175,7 @@ var undoWord = function() {
 }
 
 
-//permits only legal game moves
+// permits only legal game moves
 var checkAdjacent = function() {
 	 if (currentDieIndex === null ) {
 	 		return true;
@@ -348,7 +351,7 @@ var verifyWord = function() {
 					score += 8;
 				}
 				var listItem = $('<p>').addClass('verified-word').text(currentString);
-				$('.word-list').append(listItem);
+				$('.accepted-words').append(listItem);
 			}
  		}	
 	}
@@ -358,12 +361,17 @@ function submitWord(){
 	if (mousedown == 1){
 		// if the word is long enough, add it to the word list
 		if (currentString.length >= 3){
-			guessedWords.push(currentString);
-			verifyWord();
+			if (($.inArray(currentString, guessedWords)) != -1 ) {
+				console.log('invalid word - already guessed');
+			}
+			else {
+				guessedWords.push(currentString);
+				verifyWord();
+			}
 		}
 
 		if (score >= 0) {
-			$('p.score').text(score);
+			$('p.game-score').text(score);
 		}
 	}
 }
@@ -378,7 +386,7 @@ var renderGames = function(games) {
 };
 
 var createGameHistory = function() {
-	var currentGameScore = Number($('p.score').text());
+	var currentGameScore = Number($('p.game-score').text());
 	var gameData = {
 		game: {
 			total_score: currentGameScore
