@@ -192,6 +192,7 @@ button.new-game {
 
 div.form {
     margin-left: 10px;
+    font-family: 'Signika Negative';
 }
 
 /*shows what fields have errors in a form, if the form page doesn't save and is rerendered*/
@@ -217,7 +218,16 @@ div.form {
 
 .form-position {
   margin-left: 10px;
+  font-family: 'Signika Negative';
 }
+
+.sign-up {
+  font-family: 'Signika Negative';
+}
+.log-in {
+  font-family: 'Signika Negative';
+}
+
 
 /*-----------------------------------------------------------*/
 /*TIMER STYLE*/
@@ -441,7 +451,7 @@ p.game-history {
 }
 
 .wrapper2 {
-  margin-left: 36%;
+  margin-left: 33%;
 }
 
 #text-wrapper {
