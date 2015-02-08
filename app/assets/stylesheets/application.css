@@ -279,6 +279,7 @@ input.submit-word {
   font-family: 'Short Stack';
   font-weight: bold;
   display: none;
+  text-align: center;
 }
 input.submit-word:hover{
   background-color: gold;
