@@ -122,12 +122,20 @@ p.instruction-title {
   z-index: 100; /* makes the div the top layer, so it’ll lay on top of the other content */
   font-family: 'Signika Negative';
   color: midnightblue;
+
 }
 
 .modal-body {
   font-size: 18px;
   margin-left: 8%;
 }
+
+.modal-body { 
+    max-height: 350px; 
+    padding: 15px; 
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+ }
 
 h2.modal-title {
   margin-left: 10%;
