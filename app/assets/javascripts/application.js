@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require sweet-alert
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
@@ -25,22 +24,23 @@ $(function() {
   console.log('i am working');
   $('.start').on('click', function() {
   	$('.start').remove();
-	 	$('#instruction-modal').fadeIn(300);
-	  $('span.close-instruction-modal').on('click', function() {
+	 	$('#instruction-modal').fadeIn(500);
+	  $('#close-instruction').on('click', function() {
+	  	$('#instruction-modal').fadeOut(150);
+	  	startGame();
+	  	threeMinuteTimer();
+	 	 });
+	  $('.close-instruction').on('click', function() {
 	  	$('#instruction-modal').fadeOut(150);
 	  	startGame();
 	  	threeMinuteTimer();
 	 	 });
 	  });
-  	$('span.close-game-modal').on('click', function() {
-	  	$('#game-over-modal').fadeOut(150);
-	  	emptyGame();
+  	$('.close-game').on('click', function() {
+	  	newGame();
 	 	 });
   	$('.new-game').on('click', function() {
-  		$('#game-over-modal').fadeOut(150);
-	  	emptyGame();
-	  	startGame();
-	  	threeMinuteTimer();
+  		newGame();
 	  });
 	  $('.boggle-board').on('mousedown', '.die', function() {
 	   	buildAWord($(this));
@@ -77,14 +77,25 @@ var startGame = function() {
   game.start();
   makeGame();
   fillBoard();
+  $('.submit-word').fadeIn(300);
+  $('.undo').fadeIn(300);
 }
 
+//CLEARS current game
 var emptyGame = function() {
 	$('.boggle-board').empty();
 	$('p.timer').text("");
 	$('p.game-score').text('0');
 	$('p.word-build').empty();
 	$('p.accepted-words').empty();
+}
+
+//Function called to start a NEW game
+var newGame = function() {
+	$('#game-over-modal').fadeOut(150);
+	  	emptyGame();
+	  	startGame();
+	  	threeMinuteTimer();
 }
 
 // adds the board to html page
@@ -138,7 +149,7 @@ var threeMinuteTimer = function() {
   	clearTimeout(timer);
   	threeMinutes = 60 * 1;
   	var winningScore = $('p.game-score').text();
-  	$('h4.final-score').text("Final Score: " + winningScore);
+  	$('p.final-score').text("Final Score: " + winningScore);
   	$('#game-over-modal').fadeIn(150);
    	 }
  }, 1000);
@@ -350,7 +361,7 @@ var verifyWord = function() {
 				if (word.length >= 6) {
 					score += 8;
 				}
-				var listItem = $('<p>').addClass('verified-word').text(currentString);
+				var listItem = $('<p>').addClass('accepted-word').text(currentString);
 				$('.accepted-words').append(listItem);
 			}
  		}	
