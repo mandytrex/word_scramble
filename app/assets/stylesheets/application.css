@@ -126,7 +126,7 @@ p.instruction-title {
 }
 
 .modal-body {
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 8%;
 }
 
@@ -153,7 +153,7 @@ button.close-instruction {
   float: left;
   margin-left: 8%;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* GAME OVER MODAL STYLE*/
@@ -182,7 +182,7 @@ button.new-game {
   float: left;
   margin-left: 8%;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 
