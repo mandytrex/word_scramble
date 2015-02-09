@@ -134,7 +134,7 @@ var fillBoard = function() {
 
 
 // TIMER FUNCTION
-var threeMinutes = 60 * 1,
+var threeMinutes = 60 * 3,
 mins, seconds;
 
 var threeMinuteTimer = function() {
@@ -147,7 +147,7 @@ var threeMinuteTimer = function() {
 
   if (threeMinutes < 0) {
   	clearTimeout(timer);
-  	threeMinutes = 60 * 1;
+  	threeMinutes = 60 * 3;
   	var winningScore = $('p.game-score').text();
   	$('p.final-score').text("Final Score: " + winningScore);
   	$('#game-over-modal').fadeIn(150);
