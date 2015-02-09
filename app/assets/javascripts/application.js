@@ -111,25 +111,26 @@ var makeGame = function() {
 };
 
 //inserts dice from the array into  proper div on document
+
 var fillBoard = function() {
 	var letterArray = game.board.tiles;
 	$('div.die').effect('shake');
-	$('div#0').append(letterArray[0]);
-	$('div#1').append(letterArray[1]);
-	$('div#2').append(letterArray[2]);
-	$('div#3').append(letterArray[3]);
-	$('div#4').append(letterArray[4]);
-	$('div#5').append(letterArray[5]);
-	$('div#6').append(letterArray[6]);
-	$('div#7').append(letterArray[7]);
-	$('div#8').append(letterArray[8]);
-	$('div#9').append(letterArray[9]);
-	$('div#10').append(letterArray[10]);
-	$('div#11').append(letterArray[11]);
-	$('div#12').append(letterArray[12]);
-	$('div#13').append(letterArray[13]);
-	$('div#14').append(letterArray[14]);
-	$('div#15').append(letterArray[15]);
+	$('.die').eq(0).append(letterArray[0]);
+	$('.die').eq(1).append(letterArray[1]);
+	$('.die').eq(2).append(letterArray[2]);
+	$('.die').eq(3).append(letterArray[3]);
+	$('.die').eq(4).append(letterArray[4]);
+	$('.die').eq(5).append(letterArray[5]);
+	$('.die').eq(6).append(letterArray[6]);
+	$('.die').eq(7).append(letterArray[7]);
+	$('.die').eq(8).append(letterArray[8]);
+	$('.die').eq(9).append(letterArray[9]);
+	$('.die').eq(10).append(letterArray[10]);
+	$('.die').eq(11).append(letterArray[11]);
+	$('.die').eq(12).append(letterArray[12]);
+	$('.die').eq(13).append(letterArray[13]);
+	$('.die').eq(14).append(letterArray[14]);
+	$('.die').eq(15).append(letterArray[15]);
 }
 
 
