@@ -1,13 +1,28 @@
-<%= form_tag sessions_path do %>
-	<div class="username">
-	  <%= label_tag :username, "Username: " %>
-	  <%= text_field_tag :username %>
-	</div>
-	<div class="password">
-	  <%= label_tag :password, "Password:    " %>
-	  <%= password_field_tag :password %>
-	</div>
+<section id="login">
+    <div class="container">
+    	<div class="row">
+    	    <div class="col-xs-12">
+        	    <div class="form-wrap thumbnail">
+        	    	<img class="img-responsive" src="http://i.imgur.com/BO7XBF2.png?1">
+        	    	<br>
+						<%= form_tag sessions_path do %>
 
-  <%= submit_tag 'Submit', :id=>"submit", :class => "btn btn-default" %>
-  
-<% end %>
+					<div class="form-group">
+					  <%= label_tag :username, "Username: " %>
+					  <%= text_field_tag :username, nil, :class => 'form-control' %>
+            		</div>
+	       			<div class="form-group">
+					   <%= label_tag :password, "Password:    " %>
+						<%= password_field_tag :password, nil, :class => 'form-control' %>
+					</div>
+
+					<%= submit_tag 'Submit', :id=>"submit", :class => "btn btn-default" %>
+									  
+					<% end %>
+					<br>
+					</form>
+        	    </div>
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>

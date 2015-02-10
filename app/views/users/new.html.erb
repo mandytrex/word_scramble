@@ -1,22 +1,31 @@
-<div class="form-position">
-<h1 class="sign-up">Sign Up</h1>
-<br>
-<%= form_for @user do |f| %>
-  <div class="username">
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %>
-  </div>
 
-  <div class="password">
-    <%= f.label :password, "Password:   " %>
-    <%= f.password_field :password %>
-  </div>
-  
-  <div class="password-confirm">
-    <%= f.label :password_confirmation, "Confirm Password:" %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+<section id="login">
+    <div class="container">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="form-wrap thumbnail">
+                <img class="img-responsive" src="http://i.imgur.com/X5mc5gh.png?1">
+                  <%= form_for @user do |f| %>
+                    <div class="form-group">
+                      <%= f.label :username, "Username:" %>
+                      <%= f.text_field :username, :class => "form-control" %>
+                    </div>
 
-  <%= f.submit "Submit", :id=>"submit", :class => "btn btn-default" %>
-  <% end %>
-</div>
+                    <div class="form-group">
+                      <%= f.label :password, "Password:   " %>
+                      <%= f.password_field :password, :class => "form-control" %>
+                    </div>
+                    
+                    <div class="form-group">
+                      <%= f.label :password_confirmation, "Confirm Password:" %>
+                      <%= f.password_field :password_confirmation, :class => "form-control" %>
+                    </div>
+
+                    <%= f.submit "Submit", :id=>"submit", :class => "btn btn-default" %>
+                    <% end %>
+                    <br>
+              </div>
+        </div> <!-- /.col-xs-12 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>

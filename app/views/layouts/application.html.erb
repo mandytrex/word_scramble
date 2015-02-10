@@ -16,11 +16,7 @@
 			<% end %>
 </header>
 
-<% if session[:current_user_id] %>
-<div class="game-history">
-	<p class="word">Game History: </p>
-	</div>
-<% end %>
+
 <%= yield %>
 
 </body>

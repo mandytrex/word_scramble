@@ -23,21 +23,24 @@ if ($('#hidden-game-div')) {
 $(function() {
   console.log('i am working');
   $('.start').on('click', function() {
-  	$('.start').remove();
+  	$('.start').hide();
 	 	$('#instruction-modal').fadeIn(500);
-	  $('#close-instruction').on('click', function() {
-	  	$('#instruction-modal').fadeOut(150);
-	  	startGame();
-	  	threeMinuteTimer();
-	 	 });
 	  $('.close-instruction').on('click', function() {
 	  	$('#instruction-modal').fadeOut(150);
+	  	emptyGame();
+	  	$('.boggle-board').show();
 	  	startGame();
 	  	threeMinuteTimer();
+	  	createGameHistory();
 	 	 });
 	  });
   	$('.close-game').on('click', function() {
-	  	newGame();
+  		$('#game-over-modal').fadeOut(150);
+  		$('.submit-word').hide();
+  		$('.undo').hide();
+  		$('.boggle-board').hide();
+	  	$('.start').val('New Game');
+	  	$('.start').show();
 	 	 });
   	$('.new-game').on('click', function() {
   		newGame();

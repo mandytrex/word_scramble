@@ -17,13 +17,8 @@ ActiveRecord::Schema.define(version: 20141212222826) do
   enable_extension "plpgsql"
 
   create_table "games", force: true do |t|
-    t.integer "total_score"
-    t.integer "user_id"
-  end
-
-  create_table "letters", force: true do |t|
-    t.string   "letter"
-    t.integer  "points"
+    t.integer  "total_score"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,12 +1,13 @@
+
 <div id="hidden-game-div">
 </div>
 
 <!-- Instruction Modal -->
 <div class="modal modal-sm" id="instruction-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" id="modal-size">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" id="close-instruction" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close close-instruction"data-dismiss="modal" aria-hidden="true">&times;</button>
         <h2 class="modal-title" id="myModalLabel">How to Play:</h2>
       </div>
       <div class="modal-body">
@@ -24,7 +25,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default close-instruction" data-dismiss="modal">OK, I'm Ready to play!</button>
+        <button type="button" class="btn btn-default close-instruction" id="close-instruction" data-dismiss="modal">OK, I'm Ready to play!</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -32,7 +33,7 @@
 
 <!-- Game Over Modal -->
 <div class="modal modal-sm" id="game-over-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" id="modal-size">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close close-game" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -43,20 +44,20 @@
       	<p class="final-score"></p>
       </div>
       <div class="modal-footer">
-      	<button type="button" class="btn btn-default new-game" data-dismiss="modal">Close</button>
+      	<button type="button" class="btn btn-default close-game" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-default new-game" data-dismiss="modal">Play Again!</button>
 			</div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<br>
 <input type="submit" class="start" value="Let's Play!" title="start" />
 <span style="inline" id="buttons">
 <input type="submit" class="submit-word" value="Submit Word" title="submit-word" />
 <input type="submit" class="undo" value="Undo" title="undo" />
 </span>
 <br>
-
 <div class="wrapper1">
 	<div class="container-fluid">
 
@@ -83,7 +84,14 @@
 						<p class='accepted-words'></p>
 						</div>
 
-					</div>
+            <div class="row-fluid">
+              <% if session[:current_user_id] %>
+              <div class="game-history">
+                <p class="word">Game History: </p>
+              </div>
+              <% end %>
+					 </div>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -94,3 +102,5 @@
 <div class="wrapper2">
 <div class="boggle-board" id="fix"></div>
 </div>
+
+

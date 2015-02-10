@@ -1,11 +1,17 @@
-<h1>Hello</h1>
-
-<% if current_user == @user %>
-<p> User: <%= @user.username %> </p>
-<% end %>
-
 <script>
 $(function() {
 		$.get('/games').done(renderGames);
 	})
 </script>
+<div class="container">
+<% if current_user == @user %>
+<h2 class="game-history-show">Hey, <%= @user.username.capitalize %>! Here's how you rank ...</h1>
+<% end %>
+
+<br>
+<% if session[:current_user_id] %>
+<div class="game-history" id="game-history-show">
+	<p class="word">Game History: </p>
+	</div>
+<% end %>
+</div>

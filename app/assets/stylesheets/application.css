@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require sweet-alert
+ *= require login-form.css
+ 
  */
 
 /*-------------- GOOGLE FONTS --------------*/
@@ -35,18 +36,12 @@
 }
 
 div.logo-img {
-  margin-bottom: 25%;
+  padding-bottom: 25px;
 }
 
-p.refresh {
-  font-family: 'Orbitron';
-  font-weight: bold;
-  margin-bottom: 0px;
-  margin-top: 20px;
-  color: darkred;
-  line-height: 5px;
+#yo {
+  padding-top: 5px;
 }
-
 
 a {
   color: darkblue;
@@ -54,8 +49,13 @@ a {
 }
 
 body {
-  background-color: ghostwhite;
+  background-color: lightblue;
   font-family: helvetica;
+}
+
+#nav-background {
+  background-color: gainsboro;
+  border-color: gainsboro;
 }
 
 h1 {
@@ -82,35 +82,6 @@ div.hidden-game-div {
   visibility: hidden;
 }
 
-div#game-instructions {
-  border: 1px solid black;
-  height: 225px;
-  width: 190px;
-}
-
-p#game-instruct{
-  margin-left: 10px;
-  line-height: 20px;
-  margin-top: 3px;
-}
-
-ul.game-instructions {
-  font-size: 14px;
-  line-height: 15px;
-}
-
-p.instruction-title {
-  margin-left: 5px;
-  margin-top: 2px;
-  margin-bottom: 0;
-  text-decoration: underline;
-  font-weight: bold;
-  text-align: center;
-  color: darkblue;
-  font-family: 'Orbitron';
-}
-
-
 /*-----------------------------------------------------------*/
 /* MODAL STYLE */
 
@@ -127,6 +98,11 @@ p.instruction-title {
   font-family: 'Signika Negative';
   color: midnightblue;
 
+}
+
+#modal-size {
+  width: 80%;
+  height: 100%;
 }
 
 .modal-body {
@@ -152,7 +128,7 @@ h2.modal-title {
   float: left;
 }
 
-button.close-instruction {
+button#close-instruction {
   background-color: dodgerblue;
   float: left;
   margin-left: 8%;
@@ -264,7 +240,7 @@ input.start {
   margin-bottom: 10px;
   width: 195px;
   height: 40px;
-  background-color: silver;
+  background-color: gainsboro;
   border-radius: 10px;
   font-weight: bold;
   color: darkblue;
@@ -329,6 +305,7 @@ input.new-game:hover{
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
+  width: 193px;
   height: 45px;
   border: 2px solid midnightblue;
   border-radius: 5px;
@@ -353,6 +330,7 @@ p.word-build{
   margin-top: 20px;
   margin-bottom: 10px;
   text-align: center;
+  width: 193px;
   height: 40px;
   border: 2px solid midnightblue;
   border-radius: 5px;
@@ -385,13 +363,13 @@ p.game-score{
 }
 
 p.word {
-  margin-left: 5px;
   margin-top: 2px;
-  text-decoration: underline;
   font-weight: bold;
   text-align: center;
-  font-family: 'Orbitron';
+  font-family: 'Signika Negative';
+  font-size: 15px;
 }
+
 
 p.accepted-word {
   margin-left: 5px;
@@ -403,15 +381,38 @@ p.accepted-word {
 
 div.game-history {
   float: right;
-  color: darkblue;
-  width: 150px;
+  color: midnightblue;
+  width: 193px;
   height: 200px;
-  border: 1px solid darkblue;
-  margin-left: 20px;
-  padding-left: 5px;
-  margin-right: 100px;
-  margin-top: 50px;
+  border: 2px solid midnightblue;
+  border-radius: 5px;
+  padding-left: 8px;
   overflow: auto;
+  font-family: 'Signika Negative';
+  font-size: 15px;
+}
+
+/*GAME HISTORY ON SHOW PAGE*/
+div#game-history-show {
+  float: right;
+  color: midnightblue;
+  width: 193px;
+  height: 200px;
+  border: 2px solid midnightblue;
+  border-radius: 5px;
+  padding-left: 8px;
+  overflow: auto;
+  font-family: 'Signika Negative';
+  font-size: 15px;
+  float: left;
+}
+
+h1.game-history-show {
+  font-family: 'Signika Negative';
+}
+
+h2.game-history-show {
+ font-family: 'Signika Negative'; 
 }
 
 p.past-scores {
@@ -443,6 +444,7 @@ p.game-history {
  margin-left: auto;
  margin-right: auto;
  float: left;
+ overflow: auto;
 }
 
 .wrapper1 {
@@ -452,6 +454,7 @@ p.game-history {
 
 .wrapper2 {
   margin-left: 33%;
+  overflow: auto;
 }
 
 #text-wrapper {
@@ -489,8 +492,8 @@ div.playable {
   height: 120px;
   margin: 1px;
   border-radius: 5px;
-  background: dodgerblue;
-  border: 4px solid darkblue;
+  background: gainsboro;
+  border: 3px solid darkblue;
   float: left;
   font-family: monospace;
 
