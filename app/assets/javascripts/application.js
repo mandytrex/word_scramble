@@ -31,7 +31,6 @@ $(function() {
 	  	$('.boggle-board').show();
 	  	startGame();
 	  	threeMinuteTimer();
-	  	createGameHistory();
 	 	 });
 	  });
   	$('.close-game').on('click', function() {
@@ -153,6 +152,7 @@ var threeMinuteTimer = function() {
   	clearTimeout(timer);
   	threeMinutes = 60 * 3;
   	var winningScore = $('p.game-score').text();
+  	createGameHistory();
   	$('p.final-score').text("Final Score: " + winningScore);
   	$('#game-over-modal').fadeIn(150);
    	 }
