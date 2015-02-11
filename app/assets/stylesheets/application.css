@@ -396,7 +396,7 @@ div.game-history {
 div#game-history-show {
   float: right;
   color: midnightblue;
-  width: 193px;
+  width: 400px;
   height: 200px;
   border: 2px solid midnightblue;
   border-radius: 5px;
@@ -412,7 +412,8 @@ h1.game-history-show {
 }
 
 h2.game-history-show {
- font-family: 'Signika Negative'; 
+ font-family: 'Signika Negative';
+ color: midnightblue;
 }
 
 p.past-scores {

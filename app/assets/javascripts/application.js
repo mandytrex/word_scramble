@@ -19,7 +19,7 @@
 //= scrambleClasses/die.js
 //= scrambleClasses/board.js
 
-if ($('#hidden-game-div')) {
+// if ($('#hidden-game-div')) {
 $(function() {
   console.log('i am working');
   $('.start').on('click', function() {
@@ -58,7 +58,7 @@ $(function() {
 		$('.undo').on('click', undoWord);
 		$.get('/games').done(renderGames);
 		})
-	}
+	// }
 
 //HELPER VARIABLES
 //array of guessed words (valid & invalid)
@@ -100,7 +100,7 @@ var newGame = function() {
 	  	threeMinuteTimer();
 }
 
-// adds the board to html page
+// adds the newly created board to the 'boggle-board' div
 var makeGame = function() {
   for(var row = 0; row < 4; row++) {
     var rowDiv = $('<div>').addClass('row-die').appendTo($('body'))
@@ -112,29 +112,27 @@ var makeGame = function() {
   }
 };
 
-//inserts dice from the array into  proper div on document
-
+//inserts dice from the array into proper div on boggle board
 var fillBoard = function() {
 	var letterArray = game.board.tiles;
-	$('div.die').effect('shake');
-	$('.die').eq(0).append(letterArray[0]);
-	$('.die').eq(1).append(letterArray[1]);
-	$('.die').eq(2).append(letterArray[2]);
-	$('.die').eq(3).append(letterArray[3]);
-	$('.die').eq(4).append(letterArray[4]);
-	$('.die').eq(5).append(letterArray[5]);
-	$('.die').eq(6).append(letterArray[6]);
-	$('.die').eq(7).append(letterArray[7]);
-	$('.die').eq(8).append(letterArray[8]);
-	$('.die').eq(9).append(letterArray[9]);
-	$('.die').eq(10).append(letterArray[10]);
-	$('.die').eq(11).append(letterArray[11]);
-	$('.die').eq(12).append(letterArray[12]);
-	$('.die').eq(13).append(letterArray[13]);
-	$('.die').eq(14).append(letterArray[14]);
-	$('.die').eq(15).append(letterArray[15]);
+	// $('div.die').effect('shake');
+	$('.die').eq(0).effect('shake').append(letterArray[0]);
+	$('.die').eq(1).effect('shake').append(letterArray[1]);
+	$('.die').eq(2).effect('shake').append(letterArray[2]);
+	$('.die').eq(3).effect('shake').append(letterArray[3]);
+	$('.die').eq(4).effect('shake').append(letterArray[4]);
+	$('.die').eq(5).effect('shake').append(letterArray[5]);
+	$('.die').eq(6).effect('shake').append(letterArray[6]);
+	$('.die').eq(7).effect('shake').append(letterArray[7]);
+	$('.die').eq(8).effect('shake').append(letterArray[8]);
+	$('.die').eq(9).effect('shake').append(letterArray[9]);
+	$('.die').eq(10).effect('shake').append(letterArray[10]);
+	$('.die').eq(11).effect('shake').append(letterArray[11]);
+	$('.die').eq(12).effect('shake').append(letterArray[12]);
+	$('.die').eq(13).effect('shake').append(letterArray[13]);
+	$('.die').eq(14).effect('shake').append(letterArray[14]);
+	$('.die').eq(15).effect('shake').append(letterArray[15]);
 }
-
 
 // TIMER FUNCTION
 var threeMinutes = 60 * 2,
@@ -161,11 +159,10 @@ var threeMinuteTimer = function() {
 }
 
 
-//allows users to BUILD words to guess
+//allows users to BUILD words for guessing
 var buildAWord = function(event) {
  	die = event;
  	console.log("Current Letter: " + die.text());
- 	//index(ID) of current die
 
  	if (die.hasClass('playable') && checkAdjacent() == true) {
  		$('p.word-build').append(die.text());
@@ -191,21 +188,19 @@ var undoWord = function() {
 }
 
 
-// permits only legal game moves
+// PERMITS ONLY LEGAL GAME MOVES
 var checkAdjacent = function() {
 	 if (currentDieIndex === null ) {
 	 		return true;
 	 }
 
-	 if ((currentDieIndex === 0) 
-	 	&& (Number(die.attr('id')) === 4 
+	 if ((currentDieIndex === 0) && (Number(die.attr('id')) === 4 
 	 		|| Number(die.attr('id')) === 1 
 	 		|| Number(die.attr('id')) === 5 ))	{
 			 		return true;
 			 } 
 
-	 if ((currentDieIndex === 1) 
-	 	&& (Number(die.attr('id')) === 0 
+	 if ((currentDieIndex === 1) && (Number(die.attr('id')) === 0 
 	 		|| Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 4 
@@ -213,8 +208,7 @@ var checkAdjacent = function() {
 			 	  return true;
 			 }
 
-	 if ((currentDieIndex === 2) 
-	 	&& (Number(die.attr('id')) === 1 
+	 if ((currentDieIndex === 2) && (Number(die.attr('id')) === 1 
 	 		|| Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 3 
 	 		|| Number(die.attr('id')) === 5 
@@ -222,15 +216,13 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 3) 
-	 	&& (Number(die.attr('id')) === 2 
+	 if ((currentDieIndex === 3) && (Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 7 
 	 		|| Number(die.attr('id')) === 6 ))	{
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 4) 
-	 	&& (Number(die.attr('id')) === 0 
+	 if ((currentDieIndex === 4) && (Number(die.attr('id')) === 0 
 	 		|| Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 1 
@@ -238,8 +230,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 5) 
-	 	&& (Number(die.attr('id')) === 1 
+	 if ((currentDieIndex === 5) && (Number(die.attr('id')) === 1 
 	 		|| Number(die.attr('id')) === 4 
 	 		|| Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 9 
@@ -250,8 +241,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 6) 
-	 	&& (Number(die.attr('id')) === 2 
+	 if ((currentDieIndex === 6) && (Number(die.attr('id')) === 2 
 	 		|| Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 7 
 	 		|| Number(die.attr('id')) === 10 
@@ -262,8 +252,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 7) 
-	 	&& (Number(die.attr('id')) === 3 
+	 if ((currentDieIndex === 7) && (Number(die.attr('id')) === 3 
 	 		|| Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 11 
 	 		|| Number(die.attr('id')) === 2 
@@ -271,8 +260,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 8) 
-	 	&& (Number(die.attr('id')) === 4 
+	 if ((currentDieIndex === 8) && (Number(die.attr('id')) === 4 
 	 		|| Number(die.attr('id')) === 9 
 	 		|| Number(die.attr('id')) === 12 
 	 		|| Number(die.attr('id')) === 5 
@@ -280,8 +268,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 9) 
-	 	&& (Number(die.attr('id')) === 5 
+	 if ((currentDieIndex === 9) && (Number(die.attr('id')) === 5 
 	 		|| Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 10 
 	 		|| Number(die.attr('id')) === 13 
@@ -292,8 +279,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 10) 
-	 	&& (Number(die.attr('id')) === 6 
+	 if ((currentDieIndex === 10) && (Number(die.attr('id')) === 6 
 	 		|| Number(die.attr('id')) === 9 
 	 		|| Number(die.attr('id')) === 11 
 	 		|| Number(die.attr('id')) === 14 
@@ -304,8 +290,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 11) 
-	 	&& (Number(die.attr('id')) === 7 
+	 if ((currentDieIndex === 11) && (Number(die.attr('id')) === 7 
 	 		|| Number(die.attr('id')) === 10 
 	 		|| Number(die.attr('id')) === 15 
 	 		|| Number(die.attr('id')) === 6 
@@ -313,15 +298,13 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 12) 
-	 	&& (Number(die.attr('id')) === 8 
+	 if ((currentDieIndex === 12) && (Number(die.attr('id')) === 8 
 	 		|| Number(die.attr('id')) === 13 
 	 		|| Number(die.attr('id')) === 9 ))	{
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 13) 
-	 	&& (Number(die.attr('id')) === 9 
+	 if ((currentDieIndex === 13) && (Number(die.attr('id')) === 9 
 	 		|| Number(die.attr('id')) === 12 
 	 		|| Number(die.attr('id')) === 14 
 	 		|| Number(die.attr('id')) === 8 
@@ -329,8 +312,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 14) 
-	 	&& (Number(die.attr('id')) === 10 
+	 if ((currentDieIndex === 14) && (Number(die.attr('id')) === 10 
 	 		|| Number(die.attr('id')) === 13 
 	 		|| Number(die.attr('id')) === 15 
 	 		|| Number(die.attr('id')) === 9 
@@ -338,8 +320,7 @@ var checkAdjacent = function() {
 			 		 return true;
 			 }
 
-	 if ((currentDieIndex === 15) 
-	 	&& (Number(die.attr('id')) === 11 
+	 if ((currentDieIndex === 15) && (Number(die.attr('id')) === 11 
 	 		|| Number(die.attr('id')) === 14 
 	 		|| Number(die.attr('id')) === 10 ))	{
 			 		 return true;
@@ -349,7 +330,26 @@ var checkAdjacent = function() {
 			 }
 }
 
-//verifies word in dictionary & adds points to score for verified words
+//SUBMIT WORD - Accepts work & updates score IF word is verified
+function submitWord(){
+	if (mousedown == 1){
+		// if the word is long enough, add it to the word list
+		if (currentString.length >= 3){
+			if (($.inArray(currentString, guessedWords)) != -1 ) {
+				console.log('invalid word - already guessed');
+			}
+			else {
+				guessedWords.push(currentString);
+				verifyWord();
+			}
+		}
+		if (score >= 0) {
+			$('p.game-score').text(score);
+		}
+	}
+}
+
+//Verifies word in dictionary & increases points to score for verified words
 var verifyWord = function() {
 	var word = currentString.toLowerCase();
 		for (d=0; d < boggleDictionary.length; d++) {	
@@ -372,30 +372,10 @@ var verifyWord = function() {
  		}	
 	}
 
-//SUBMIT a word - accepts and updates screen score IF word is verified
-function submitWord(){
-	if (mousedown == 1){
-		// if the word is long enough, add it to the word list
-		if (currentString.length >= 3){
-			if (($.inArray(currentString, guessedWords)) != -1 ) {
-				console.log('invalid word - already guessed');
-			}
-			else {
-				guessedWords.push(currentString);
-				verifyWord();
-			}
-		}
-
-		if (score >= 0) {
-			$('p.game-score').text(score);
-		}
-	}
-}
-
 // GAME HISTORY FUNCTIONS
 var renderGames = function(games) {
   games.forEach(function(game) {
-    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+    var scores = $('<p>').text("Past Score: " + game.total_score).attr('id', game.id);
     scores.addClass('past-scores');
     scores.appendTo($('.game-history'));
   });
@@ -411,10 +391,9 @@ var createGameHistory = function() {
 
  $.post('/games', gameData).done(function(game) {
     // Add a new score to the game history div
-    var scores = $('<p>').text("Score: " + game.total_score).attr('id', game.id);
+    var scores = $('<p>').text("Past Score: " + game.total_score).attr('id', game.id);
     scores.addClass('past-scores');
     scores.appendTo($('.game-history'));
-
     // Render the new score in game history view area
     renderGames(game);
   });
