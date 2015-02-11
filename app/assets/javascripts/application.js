@@ -154,6 +154,7 @@ var threeMinuteTimer = function() {
   	var winningScore = $('p.game-score').text();
   	createGameHistory();
   	$('p.final-score').text("Final Score: " + winningScore);
+  	emptyGame();
   	$('#game-over-modal').fadeIn(150);
    	 }
  }, 1000);
